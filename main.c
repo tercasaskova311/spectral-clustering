@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <laplacian.h>
 
 //Can be changed to use our data folder
 void generate_data(double *X, int n, int d, int rank) {

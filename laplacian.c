@@ -13,11 +13,11 @@ void load_similarity_matrix(const char *filename, double *S, int n, int rank){
             MPI_Abort(MPI_COMM_WORLD, 1);
         }
 
-        printf("load matrices from " filename);
+        printf("Loading matrices from %s\n", filename);
 
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n; j ++) {
-                if (fscanf(f, "%lf", &S[i*n + j]) != 1) {
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j ++) {
+                if (fscanf(f, " %lf%*[,]", &S[i*n + j]) != 1) {
                     fprintf (stderr, "error reading matrix");
                     fclose(f);
                     MPI_Abort(MPI_COMM_WORLD, 1);
@@ -26,7 +26,7 @@ void load_similarity_matrix(const char *filename, double *S, int n, int rank){
         }
 
         fclose(f);
-        printf("load similarity matrices", n, n);
+        printf("Loaded similarity matrix of size %d x %d\n", n, n);
     
     }
     //broadcast full matrix to ALL PROCESSES... later each process compute only its assign rows
@@ -35,13 +35,8 @@ void load_similarity_matrix(const char *filename, double *S, int n, int rank){
 
 void compute_degree_matrix (double *S, double *degree, int n, int rank, int size){
     int rows_per_proc = n / size;
-    int start_row = rank * rows_per_proc;
+    int start_row;
     int end_row;
-    if (rank == size-1){
-        end_row = n;
-    } else {
-        end_row = (rank+1) * rows_per_proc
-    }
 
     int remainder = n % size;
     if (rank < remainder) {
@@ -71,13 +66,9 @@ void compute_degree_matrix (double *S, double *degree, int n, int rank, int size
 
 void laplacian (double *S, double *degree, double *L, int n, int rank, int size){
     int rows_per_proc = n / size;
-    int start_row = rank * rows_per_proc;
+    int start_row;
     int end_row;
-    if (rank == size-1){
-        end_row = n;
-    } else {
-        end_row = (rank+1) * rows_per_proc
-    }
+
     int remainder = n % size;  
     if (rank < remainder) {
         start_row = rank * (rows_per_proc + 1);
@@ -101,5 +92,4 @@ void laplacian (double *S, double *degree, double *L, int n, int rank, int size)
 
     MPI_Allreduce(MPI_IN_PLACE, L, n * n, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 }
-
 
