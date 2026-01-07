@@ -3,7 +3,7 @@ int n;    // number of points
 int k;    // number of clusters
 
 double S[n][n];   // similarity matrix
-double D[n][n];   // degree matrix (diagonal)
+double D[n];   // degree matrix (diagonal)
 double L[n][n];   // Laplacian
 double U[n][k];   // first k eigenvectors
 double Y[n][k];   // row-embedded points (same as U)
@@ -23,13 +23,12 @@ build_degree_matrix(D, S);
 build_laplacian(L, D, S);
 
 //compute eigenvalues and eigenvectors of L - simply compute first n eigenvalues from L and then eigenvectors out of it
-//we dont use the first eigenvector (corresponding to eigenvalue 0)
+//Take the eigenvectors corresponding to the k smallest non-zero eigenvalues
 eig_decompose(L, eigenvalues, eigenvectors);
 
 //select k smallest eigenvectors → U = this step will fill U with the first k eigenvectors
 select_k_smallest_eigenvectors(eigenvectors, eigenvalues, U, k);
 
-//normalize rows of U to get Y - which basically is the final embedded points
 kmeans(U, labels);
 
 return labels;
