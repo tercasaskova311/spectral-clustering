@@ -1,10 +1,9 @@
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include "laplacian.c"
-#include "eigensolver.c"
-#include "kmeans.c"
+#include "laplacian.h"
+#include "eigensolver.h"
+#include "kmeans.h"
 
 int main(int argc, char **argv) {
     MPI_Init(&argc, &argv);
@@ -20,7 +19,7 @@ int main(int argc, char **argv) {
     double *S = malloc(n * n * sizeof(double));
     double *degree = malloc(n * sizeof(double));
     double *L = malloc(n * n * sizeof(double));
-    double *eigenvecs = malloc(n * k * sizeof(double));
+    double *U = malloc(n * k * sizeof(double));
     int *labels = malloc(n * sizeof(int));
 
     // 1. Similarity matrix
@@ -31,12 +30,12 @@ int main(int argc, char **argv) {
     laplacian(S, degree, L, n, rank, size);
 
     // 3. Eigenvectors
-    compute_eigenvectors(L, eigenvecs, n, k, rank);
+    compute_eigenvectors(L, U, n, k, rank);
 
     // 4. k-means
-    kmeans(eigvecs, n, k, clusters, 100, rank, size, labels);
+    kmeans(U, n, k, clusters, 50, rank, size, labels);
 
-    if (rank == 0) {
+    /*if (rank == 0) {
         printf("\nDegree vector:\n");
         for (int i = 0; i < n; i++)
             printf("%f ", degree[i]);
@@ -47,7 +46,10 @@ int main(int argc, char **argv) {
                 printf("%6.2f ", L[i*n + j]);
             printf("\n");
         }
-    }    
+    }    */
+    if (rank==0){
+        printf("Spectral clustering completed. \n");
+    }
 
     free(S); free(degree); free(L); free(U); free(labels);
     MPI_Finalize();
