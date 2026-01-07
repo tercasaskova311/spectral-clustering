@@ -1,3 +1,9 @@
+#include "eigensolver.h"
+#include <mpi.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 //LAPACK 
 extern void dsyev_(
     char *jobz, char *uplo,
@@ -8,45 +14,38 @@ extern void dsyev_(
 );
 
 
-void compute_eigenvectors(double *L, double *eigenvecs, int n, int k, int rank){
-    double *A = NULL;
-    double *eigvals = NULL;
-
+void compute_eigenvectors(double *L, double *U, int n, int k, int rank){
     if (rank == 0) {
-        A = malloc(n * n * sizeof(double));
-        eigvals = malloc(n * sizeof(double));
+        double *A  = malloc(n * n * sizeof(double));
+        double *w = malloc(n * sizeof(double));
+        
         memcpy(A, L, n * n * sizeof(double));
-    }
 
-    int lwork = -1;
-    double wkopt;
-    int info;
-    char jobz = 'V';
-    char uplo = 'U';
+        int lwork = -1, info;
+        double wkopt;
+        char jobz = 'V', uplo = 'U';
 
-    dsyev_(&jobz, &uplo, &n, A, &n, eigvals, &wkopt, &lwork, &info);
+        dsyev_(&jobz, &uplo, &n, A, &n, w, &wkopt, &lwork, &info);
+        
+        lwork = (int) wkopt;
+        double *work = malloc(lwork * sizeof(double));
+        
+        dsyev_(&jobz, &uplo, &n, A, &n, w, work, &lwork, &info);
 
-    lwork = (int) wkopt;
-    double *work = malloc(lwork * sizeof(double));
-
-    dsyev_(&jobz, &uplo, &n, A, &n, eigvals, work, &lwork, &info);
-
-    if (info != 0){
-        fprintf(stderr, "Eigen decomposition failed\n");
-        MPI_Abort(MPI_COMM_WORLD, 1);
-    }
-
-    // the first k eigenvectors which are smaller
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < k; j++){
-            eigvecs[i * k + j] = A[i * n + j];
+        if (info != 0){
+            fprintf(stderr, "Eigen decomposition failed\n");
+            MPI_Abort(MPI_COMM_WORLD, 1);
         }
-    }
 
-    free(work);
-    free(A);
-    free(eigvals);
+        // the first k eigenvectors which are smaller
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < k; j++){
+                U[i * k + j] = A[i * n + j];
+            }
+        }
+        free(A); free(w); free(work);
+    }
 
     // broadcast eigenvectors to all ranks
-    MPI_Bcast(eigvecs, n * k, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(U, n * k, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 }

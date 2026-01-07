@@ -1,5 +1,10 @@
-void kmeans(double *U, int n, int k, int clusters, int max_iter, int rank, int size, int *labels){
-    double *centroids = malloc(clusters  k * sizeof(double));
+#include "kmeans.h"
+#include <mpi.h>
+#include <stdlib.h>
+#include <math.h>
+
+void kmeans(double *U, int n, int k, int clusters, int iters, int rank, int size, int *labels){
+    double *centroids = malloc(clusters * k * sizeof(double));
 
     if (rank == 0){
         for (int c = 0; c < clusters; c++){
@@ -9,19 +14,15 @@ void kmeans(double *U, int n, int k, int clusters, int max_iter, int rank, int s
         }
     }
 
-    MPI_Bcast(centroids, clusters, *k, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(centroids, clusters * k, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    
+    int rows = n / size, rem = n % size;
+    int start = (rank < rem) ? rank * (rows + 1) : rank * rows + rem;
+    int end = start + ((rank < rem) ? rows + 1 : rows);
 
-    for (int iter = 0; iter < max_iter; iter++) {
-
+    for (int it = 0; it < iters; it++) {
         double *local_sum = calloc(clusters * k, sizeof(double));
         int *local_count = calloc(clusters, sizeof(int));
-
-        // same row partition logic as before
-        int rows_per_proc = n / size;
-        int start = (rank < n % size)
-                ? rank * (rows_per_proc + 1)
-                : rank * rows_per_proc + (n % size);
-        int end = start + ((rank < n % size) ? rows_per_proc + 1 : rows_per_proc);
 
         // assignment step
         for (int i = start; i < end; i++) {
@@ -31,8 +32,8 @@ void kmeans(double *U, int n, int k, int clusters, int max_iter, int rank, int s
             for (int c = 0; c < clusters; c++) {
                 double dist = 0.0;
                 for (int j = 0; j < k; j++) {
-                    double diff = U[i * k + j] - centroids[c * k + j];
-                    dist += diff * diff;
+                    double d = U[i * k + j] - centroids[c * k + j];
+                    dist += d * d;
                 }
                 if (dist < best_dist) {
                     best_dist = dist;
@@ -58,13 +59,12 @@ void kmeans(double *U, int n, int k, int clusters, int max_iter, int rank, int s
         for (int c = 0; c < clusters; c++) {
             if (local_count[c] > 0) {
                 for (int j = 0; j < k; j++) {
-                    centroids[c * k + j] =
-                        local_sum[c * k + j] / local_count[c];
+                    centroids[c * k + j] = local_sum[c * k + j] / local_count[c];
                 }
             }
         }
 
-        free(local_sum);
-        free(local_count);
+        free(local_sum); free(local_count);
     }
+    free(centroids);
 }

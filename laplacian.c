@@ -1,8 +1,7 @@
+#include "laplacian.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
-#include <mpi.h>
 
 
 void load_similarity_matrix(const char *filename, double *S, int n, int rank){
