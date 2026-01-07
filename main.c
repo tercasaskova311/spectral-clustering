@@ -6,7 +6,7 @@
 //Can be changed to use our data folder
 void generate_data(double *X, int n, int d, int rank) {
     for (int i = 0; i < n * d; i++) {
-        X[i] = drand48() + rank;
+        X[i] = rand() + rank;
     }
 }
 
