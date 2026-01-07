@@ -12,7 +12,6 @@ double eigenvalues[n];
 double eigenvectors[n][n];
 
 
-
 // INPUT: data points - assumed already assigned similarity values in S for the simplicity ....?// OUTPUT: cluster labels for each point
 build_similarity_matrix(S);
 
