@@ -41,10 +41,10 @@ make
 
 ## Run locally 
 # Single process (debug)
-mpirun -np 1 ./spectral_mpi data/ans_batch/test2_ddg.txt
+mpirun.actual -np 1 ./spectral_mpi data/ans_batch/test2_ddg.txt
 
 # Multi-process
-mpirun -np 4 ./spectral_mpi data/ans_batch/test2_ddg.txt 3 3
+mpirun.actual -np 4 ./spectral_mpi data/ans_batch/test2_ddg.txt 3 3
 # arguments: <file> <k eigenvectors> <clusters>
 
 
