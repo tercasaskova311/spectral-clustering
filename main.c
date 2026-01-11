@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <math.h>
 
 #include "laplacian.h"
 #include "eigensolver.h"
@@ -12,13 +13,25 @@ int read_matrix_size(const char *filename) {
     FILE *f = fopen(filename,"r");
     if(!f) { perror("Failed to open"); MPI_Abort(MPI_COMM_WORLD,1); }
 
-    int n = 0;
-    char line[4096];
-    while(fgets(line, sizeof(line), f)) {
-        if(line[0] != '\n') n++;
+    double tmp;
+    long long count = 0;
+    while (fscanf(f, "%lf%*[, ]", &tmp) == 1) {
+        count++;
     }
 
+    double tmp;
+    long long count = 0;
+    while (fscanf(f, "%lf%*[, ]", &tmp) == 1) {
+        count++;
+    }
     fclose(f);
+    
+    int n = (int)(sqrt((double)count));
+    if ((long long)n * n != count) {
+        fprintf(stderr, "Input file does not contain a square matrix (values=%lld)", count);
+        MPI_Abort(MPI_COMM_WORLD, 1);
+    }
+
     return n;
 }
 
@@ -39,10 +52,9 @@ int main(int argc, char **argv) {
     if (argc >= 3) k = atoi(argv[2]);
     if (argc >= 4) clusters = atoi(argv[3]);
 
-
     if (rank == 0) {
         n = read_matrix_size(input_file);
-        }
+    }
 
     MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
@@ -80,9 +92,17 @@ int main(int argc, char **argv) {
     MPI_Barrier(MPI_COMM_WORLD); 
     t_start = MPI_Wtime();    
     laplacian(S, degree, L, n, rank, size);
+    free(S); // similarity matrix not needed anymore
+    S = NULL;
     t_laplacian = MPI_Wtime() - t_start;
 
     //3.eigenvectors
+    // free laplacian on non-root ranks
+    if (rank != 0){
+        free(L);
+        L = NULL;
+    }
+
     MPI_Barrier(MPI_COMM_WORLD);
     t_start = MPI_Wtime();
     compute_eigenvectors(L, U, n, k, rank);
@@ -117,23 +137,3 @@ int main(int argc, char **argv) {
     MPI_Finalize();
     return 0;
 }
-
-
-
-
-    /*if (rank == 0) {
-        printf("\nDegree vector:\n");
-        for (int i = 0; i < n; i++)
-            printf("%f ", degree[i]);
-        printf("\n\nLaplacian matrix:\n");
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++)
-                printf("%6.2f ", L[i*n + j]);
-            printf("\n");
-        }
-    }    */
-    // In main.c, after kmeans:
-
-
-    // Repeat for each phase...
