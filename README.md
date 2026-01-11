@@ -39,6 +39,12 @@ module load mpich-3.2
 make clean
 make
 
+# Build the code with metrics disabled (for benchmarking)
+
+make clean\
+make CFLAGS="-std=c99 -Wall -Wextra -DENABLE_METRICS=0"
+
+
 ## Run locally 
 # Single process (debug)
 mpirun.actual -np 1 ./spectral_mpi data/ans_batch/test2_ddg.txt

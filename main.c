@@ -11,6 +11,10 @@
 #include "read_matrix_size.h"
 #include "compute_similarity.h"
 
+#ifndef ENABLE_METRICS
+#define ENABLE_METRICS 1
+#endif
+
 int main(int argc, char **argv) {
     MPI_Init(&argc, &argv);
 
@@ -25,7 +29,6 @@ int main(int argc, char **argv) {
     int clusters = 3;
     int cols = -1;
     int is_feature = 0;
-
 
     // Optional overrides = ./spectral_mpi [file] [k] [clusters]
     if (argc >= 2) input_file = argv[1];
@@ -52,8 +55,8 @@ int main(int argc, char **argv) {
     MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(&cols, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(&is_feature, 1, MPI_INT, 0, MPI_COMM_WORLD);
-    MPI_Bcast(&k, 1, MPI_INT, 0, MPI_COMM_WORLD);           // ADD THIS
-    MPI_Bcast(&clusters, 1, MPI_INT, 0, MPI_COMM_WORLD);    // ADD THIS 
+    MPI_Bcast(&k, 1, MPI_INT, 0, MPI_COMM_WORLD);           
+    MPI_Bcast(&clusters, 1, MPI_INT, 0, MPI_COMM_WORLD);    
 
     if (rank == 0) mkdir("output", 0755);
     MPI_Barrier(MPI_COMM_WORLD); 
@@ -87,13 +90,13 @@ int main(int argc, char **argv) {
             double *X = malloc(n * cols * sizeof(double));
             if (!X) MPI_Abort(MPI_COMM_WORLD, 1);
 
-            load_matrix(input_file, X, n, cols);
+            load_feature_matrix(input_file, X, n, cols);
             compute_similarity_matrix(X, S, n, cols, sigma);
             free(X);
         }
         MPI_Bcast(S, n * n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
     } else {
-        load_matrix(input_file, S, n, 0);  // ALL RANKS call this
+        load_square_matrix(input_file, S, n, rank);  // ALL RANKS call this
     }    
     t_load = MPI_Wtime() - t_start;
 
@@ -131,8 +134,6 @@ int main(int argc, char **argv) {
 
     // metrics ======================================
     if(rank == 0){
-        double score = cluster_similarity_score(S, labels, n);
-
         printf("\n=== Spectral Clustering Results ===\n");
         printf("Dataset: %s\n", input_file);
         printf("Matrix size: %d x %d\n", n, n);
@@ -146,18 +147,36 @@ int main(int argc, char **argv) {
         printf("Eigenvectors:   %.6f s\n", t_eigen);
         printf("K-means:        %.6f s\n", t_kmeans);
         printf("Total time:     %.6f s\n", t_total);
+
+        #if ENABLE_METRICS
+        double score = cluster_similarity_score(S, labels, n);
+
         printf("\n--- Quality ---\n");
         printf("Cluster quality (intra/inter ratio): %.4f\n", score);
+        #endif
+
         printf("===================================\n\n");
 
         // Append to CSV
-        FILE *f = fopen("output/performance.csv", "w");
-        if(f){
-            for (int i = 0; i < n; i++) {
-                fprintf(f, "%d\n", labels[i]);
-            }
-            fclose(f);
+        FILE *pf = fopen("output/performance.csv", "a");
+        if (pf) {
+            fprintf(pf,
+                "%s,%d,%d,%d,%d,%d,"
+                "%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,",
+                input_file, n, cols, k, clusters, size,
+                t_load, t_degree, t_laplacian,
+                t_eigen, t_kmeans, t_total
+            );
+
+            #if ENABLE_METRICS
+            fprintf(pf, "%.6f\n", score);
+            #else
+            fprintf(pf, "-1\n");
+            #endif
+
+            fclose(pf);
         }
+        
     }
 
     free(S);
