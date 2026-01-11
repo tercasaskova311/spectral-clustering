@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <math.h>
 
 #include "laplacian.h"
 #include "eigensolver.h"
@@ -14,13 +15,19 @@ int read_matrix_size(const char *filename) {
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
 
-    int n;
-    if (fscanf(f, "%d", &n) != 1) {
-        fprintf(stderr, "Failed to read matrix size\n");
+    double tmp;
+    long long count = 0;
+    while (fscanf(f, "%lf%*[, ]", &tmp) == 1) {
+        count++;
+    }
+    fclose(f);
+    
+    int n = (int)(sqrt((double)count));
+    if ((long long)n * n != count) {
+        fprintf(stderr, "Input file does not contain a square matrix (values=%lld)", count);
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
 
-    fclose(f);
     return n;
 }   
 
@@ -44,7 +51,7 @@ int main(int argc, char **argv) {
 
     if (rank == 0) {
         n = read_matrix_size(input_file);
-        }
+    }
 
     MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
@@ -119,23 +126,3 @@ int main(int argc, char **argv) {
     MPI_Finalize();
     return 0;
 }
-
-
-
-
-    /*if (rank == 0) {
-        printf("\nDegree vector:\n");
-        for (int i = 0; i < n; i++)
-            printf("%f ", degree[i]);
-        printf("\n\nLaplacian matrix:\n");
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++)
-                printf("%6.2f ", L[i*n + j]);
-            printf("\n");
-        }
-    }    */
-    // In main.c, after kmeans:
-
-
-    // Repeat for each phase...
