@@ -8,39 +8,24 @@
 #include "eigensolver.h"
 #include "kmeans.h"
 #include "metrics.h"
-
-int read_matrix_size(const char *filename) {
-    FILE *f = fopen(filename,"r");
-    if(!f) { perror("Failed to open"); MPI_Abort(MPI_COMM_WORLD,1); }
-
-    double tmp;
-    long long count = 0;
-    while (fscanf(f, "%lf%*[, ]", &tmp) == 1) {
-        count++;
-    }
-
-    fclose(f);
-    
-    int n = (int)(sqrt((double)count));
-    if ((long long)n * n != count) {
-        fprintf(stderr, "Input file does not contain a square matrix (values=%lld)", count);
-        MPI_Abort(MPI_COMM_WORLD, 1);
-    }
-
-    return n;
-}
+#include "read_matrix_size.h"
+#include "compute_similarity.h"
 
 int main(int argc, char **argv) {
     MPI_Init(&argc, &argv);
+
     int rank, size;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
     // Defaults
-    const char *input_file = "data/ans_batch/test2_ddg.txt";
+    const char *input_file = "data/ans_batch/test2_wam.txt";
     int n = -1;          
     int k = 3;
     int clusters = 3;
+    int cols = -1;
+    int is_feature = 0;
+
 
     // Optional overrides = ./spectral_mpi [file] [k] [clusters]
     if (argc >= 2) input_file = argv[1];
@@ -48,14 +33,29 @@ int main(int argc, char **argv) {
     if (argc >= 4) clusters = atoi(argv[3]);
 
     if (rank == 0) {
-        n = read_matrix_size(input_file);
+        n = get_square_matrix_size(input_file);
+        // not square matrix => get the size...
+        if (n == -1) {
+            n = get_feature_matrix_size(input_file, &cols);
+            if (n<= 0 || cols <= 0) {
+                fprintf(stderr, "cannot read matrix\n");
+                MPI_Abort(MPI_COMM_WORLD, 1);
+            }
+            is_feature = 1;
+        }
+        if (k > n || clusters > n) {
+            fprintf(stderr, "Error: k or clusters larger than n\n");
+            MPI_Abort(MPI_COMM_WORLD, 1);
+        }
     }
 
     MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&cols, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&is_feature, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&k, 1, MPI_INT, 0, MPI_COMM_WORLD);           // ADD THIS
+    MPI_Bcast(&clusters, 1, MPI_INT, 0, MPI_COMM_WORLD);    // ADD THIS 
 
-    if (rank == 0) {
-        mkdir("output", 0755);
-    }
+    if (rank == 0) mkdir("output", 0755);
     MPI_Barrier(MPI_COMM_WORLD); 
 
     //alloc memory
@@ -64,6 +64,13 @@ int main(int argc, char **argv) {
     double *L = malloc(n * n * sizeof(double));
     double *U = malloc(n * k * sizeof(double));
     int *labels = malloc(n * sizeof(int));
+    double sigma = 1.0;
+
+
+    if (!S || !degree || !L || !U || !labels) {
+        fprintf(stderr, "Rank %d: Memory allocation failed\n", rank);
+        MPI_Abort(MPI_COMM_WORLD, 1);
+    }
 
     //I add a timing set up - just so we can see each part...
     double t_start, t_total;
@@ -74,7 +81,20 @@ int main(int argc, char **argv) {
 
     //load matirces
     t_start = MPI_Wtime();
-    load_similarity_matrix(input_file, S, n, rank);
+    //Load / compute similarity - some matrices in your data are not squared...
+    if (is_feature) {
+        if (rank == 0) {
+            double *X = malloc(n * cols * sizeof(double));
+            if (!X) MPI_Abort(MPI_COMM_WORLD, 1);
+
+            load_matrix(input_file, X, n, cols);
+            compute_similarity_matrix(X, S, n, cols, sigma);
+            free(X);
+        }
+        MPI_Bcast(S, n * n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    } else {
+        load_matrix(input_file, S, n, 0);  // ALL RANKS call this
+    }    
     t_load = MPI_Wtime() - t_start;
 
     //compute degree matrix
@@ -87,8 +107,6 @@ int main(int argc, char **argv) {
     MPI_Barrier(MPI_COMM_WORLD); 
     t_start = MPI_Wtime();    
     laplacian(S, degree, L, n, rank, size);
-    free(S); // similarity matrix not needed anymore
-    S = NULL;
     t_laplacian = MPI_Wtime() - t_start;
 
     //3.eigenvectors
@@ -111,24 +129,43 @@ int main(int argc, char **argv) {
 
     t_total = MPI_Wtime() - t_total;
 
-    double cluster_score = cluster_similarity_score(S, labels, n);
+    // metrics ======================================
+    if(rank == 0){
+        double score = cluster_similarity_score(S, labels, n);
 
-    if(rank==0){
-        printf("Cluster quality (intra/inter similarity ratio): %.4f\n", cluster_score);
+        printf("\n=== Spectral Clustering Results ===\n");
+        printf("Dataset: %s\n", input_file);
+        printf("Matrix size: %d x %d\n", n, n);
+        printf("Eigenvectors (k): %d\n", k);
+        printf("Clusters: %d\n", clusters);
+        printf("MPI processes: %d\n", size);
+        printf("\n--- Timing ---\n");
+        printf("Load matrix:    %.6f s\n", t_load);
+        printf("Degree matrix:  %.6f s\n", t_degree);
+        printf("Laplacian:      %.6f s\n", t_laplacian);
+        printf("Eigenvectors:   %.6f s\n", t_eigen);
+        printf("K-means:        %.6f s\n", t_kmeans);
+        printf("Total time:     %.6f s\n", t_total);
+        printf("\n--- Quality ---\n");
+        printf("Cluster quality (intra/inter ratio): %.4f\n", score);
+        printf("===================================\n\n");
 
         // Append to CSV
-        FILE *f = fopen("output/performance.csv", "a");
+        FILE *f = fopen("output/performance.csv", "w");
         if(f){
-            fprintf(f, "%s,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.4f\n",
-                    input_file, n, clusters, size,
-                    t_load, t_degree, t_laplacian, t_eigen, t_kmeans, t_total,
-                    cluster_score);
+            for (int i = 0; i < n; i++) {
+                fprintf(f, "%d\n", labels[i]);
+            }
             fclose(f);
         }
     }
 
-    free(S); free(degree); free(L); free(U); free(labels);
-    
+    free(S);
+    free(degree);
+    if (rank == 0) free(L);
+    free(U); 
+    free(labels);
+
     MPI_Finalize();
     return 0;
 }
