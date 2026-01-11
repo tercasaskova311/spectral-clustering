@@ -1,3 +1,2 @@
-Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
+dataset,n,clusters,procs,t_load,t_degree,t_laplacian,t_eigen,t_kmeans,total
 data/ans_batch/test2_ddg.txt,2,3,16,0.000607,0.007202,0.000057,0.016205,1.909860,1.985840
