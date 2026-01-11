@@ -13,4 +13,10 @@
 
 cd $PBS_O_WORKDIR
 module load mpich-3.2
+
+#initialize csv
+echo "dataset,n,clusters,procs,t_load,t_degree,t_laplacian,t_eigen,t_kmeans,total" > output/timing.csv
+
 mpirun.actual -np 16 ./spectral_mpi
+
+
