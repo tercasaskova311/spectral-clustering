@@ -2,7 +2,7 @@ CC = mpicc
 CFLAGS = -std=c99 -Wall -Wextra
 LDFLAGS = -llapack -lblas -lm
 
-SRC = main.c laplacian.c eigensolver.c kmeans.c
+SRC = main.c laplacian.c eigensolver.c kmeans.c metrics.c
 OBJ = $(SRC:.c=.o)
 
 TARGET = spectral_mpi

@@ -1,3 +1,3 @@
 dataset,n,clusters,procs,t_load,t_degree,t_laplacian,t_eigen,t_kmeans,total
-data/ans_batch/test2_ddg.txt,2,3,16,0.000350,0.000937,0.000053,0.000124,0.002649,0.020790
-data/ans_batch/test2_ddg.txt,2,3,16,0.000367,0.129962,0.101005,0.000147,15.552866,16.240994
+data/ans_batch/test2_ddg.txt,2,3,16,0.000272,0.000135,0.000027,0.000130,0.004424,0.005213
+data/ans_batch/test2_ddg.txt,2,3,16,0.000378,0.026007,0.026004,0.000106,0.004894,0.129913
