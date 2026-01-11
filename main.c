@@ -48,7 +48,6 @@ int main(int argc, char **argv) {
     if (argc >= 3) k = atoi(argv[2]);
     if (argc >= 4) clusters = atoi(argv[3]);
 
-
     if (rank == 0) {
         n = read_matrix_size(input_file);
     }
@@ -89,9 +88,17 @@ int main(int argc, char **argv) {
     MPI_Barrier(MPI_COMM_WORLD); 
     t_start = MPI_Wtime();    
     laplacian(S, degree, L, n, rank, size);
+    free(S); // similarity matrix not needed anymore
+    S = NULL;
     t_laplacian = MPI_Wtime() - t_start;
 
     //3.eigenvectors
+    // free laplacian on non-root ranks
+    if (rank != 0){
+        free(L);
+        L = NULL;
+    }
+
     MPI_Barrier(MPI_COMM_WORLD);
     t_start = MPI_Wtime();
     compute_eigenvectors(L, U, n, k, rank);
