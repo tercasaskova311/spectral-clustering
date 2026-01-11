@@ -19,11 +19,6 @@ int read_matrix_size(const char *filename) {
         count++;
     }
 
-    double tmp;
-    long long count = 0;
-    while (fscanf(f, "%lf%*[, ]", &tmp) == 1) {
-        count++;
-    }
     fclose(f);
     
     int n = (int)(sqrt((double)count));
