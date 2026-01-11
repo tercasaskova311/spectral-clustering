@@ -1,64 +1,16 @@
-[hpc-c12-node03.unitn.it:151093] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151085] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151085] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
---------------------------------------------------------------------------
-The library attempted to open the following supporting CUDA libraries,
-but each of them failed.  CUDA-aware support is disabled.
-libcuda.so.1: cannot open shared object file: No such file or directory
-libcuda.dylib: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
-If you are not interested in CUDA-aware support, then run with
---mca mpi_cuda_support 0 to suppress this message.  If you are interested
-in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
-of libcuda.so.1 to get passed this issue.
---------------------------------------------------------------------------
-Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000251,0.000019,0.000000,0.000133,0.000025,0.000430
-[hpc-c12-node03.unitn.it:151091] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151096] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151092] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151089] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151094] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151095] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151090] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151087] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151088] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151084] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151086] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151087] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151083] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151088] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
---------------------------------------------------------------------------
-The library attempted to open the following supporting CUDA libraries,
-but each of them failed.  CUDA-aware support is disabled.
-libcuda.so.1: cannot open shared object file: No such file or directory
-libcuda.dylib: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
-If you are not interested in CUDA-aware support, then run with
---mca mpi_cuda_support 0 to suppress this message.  If you are interested
-in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
-of libcuda.so.1 to get passed this issue.
---------------------------------------------------------------------------
-[hpc-c12-node03.unitn.it:151081] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151082] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
---------------------------------------------------------------------------
-The library attempted to open the following supporting CUDA libraries,
-but each of them failed.  CUDA-aware support is disabled.
-libcuda.so.1: cannot open shared object file: No such file or directory
-libcuda.dylib: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
-If you are not interested in CUDA-aware support, then run with
---mca mpi_cuda_support 0 to suppress this message.  If you are interested
-in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
-of libcuda.so.1 to get passed this issue.
---------------------------------------------------------------------------
-[hpc-c12-node03.unitn.it:151084] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151083] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151086] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250629] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250630] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250633] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250632] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250631] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250627] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250622] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250628] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250621] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250634] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250622] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250621] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250626] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
 The library attempted to open the following supporting CUDA libraries,
 but each of them failed.  CUDA-aware support is disabled.
@@ -83,8 +35,10 @@ If you are not interested in CUDA-aware support, then run with
 in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
 of libcuda.so.1 to get passed this issue.
 --------------------------------------------------------------------------
-[hpc-c12-node03.unitn.it:151081] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
-[hpc-c12-node03.unitn.it:151082] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250626] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250630] [[4419,0],0] ORTE_ERROR_LOG: Data unpack would read past end of buffer in file util/show_help.c at line 500
+[hpc-c12-node02.maas.icts.unitn.it:250623] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250623] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
 The library attempted to open the following supporting CUDA libraries,
 but each of them failed.  CUDA-aware support is disabled.
@@ -97,6 +51,38 @@ If you are not interested in CUDA-aware support, then run with
 in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
 of libcuda.so.1 to get passed this issue.
 --------------------------------------------------------------------------
+[hpc-c12-node02.maas.icts.unitn.it:250624] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250625] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250619] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250620] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250624] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node02.maas.icts.unitn.it:250625] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca mpi_cuda_support 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+[hpc-c12-node02.maas.icts.unitn.it:250619] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca mpi_cuda_support 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+[hpc-c12-node02.maas.icts.unitn.it:250620] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
 The library attempted to open the following supporting CUDA libraries,
 but each of them failed.  CUDA-aware support is disabled.
@@ -122,29 +108,32 @@ in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
 of libcuda.so.1 to get passed this issue.
 --------------------------------------------------------------------------
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000232,0.000015,0.000001,0.000144,0.000027,0.000420
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000503,0.000019,0.000012,0.000181,0.000136,0.000851
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000307,0.000012,0.000000,0.000113,0.000017,0.000449
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000483,0.000021,0.000011,0.000197,0.000116,0.000830
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000201,0.000012,0.000000,0.000098,0.000017,0.000329
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000945,0.000016,0.000011,0.000182,0.000117,0.001272
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000192,0.000012,0.000000,0.000101,0.000017,0.000323
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000481,0.000017,0.000011,0.000168,0.000116,0.000794
+[hpc-c12-node03.unitn.it:151720] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000233,0.000016,0.000001,0.000125,0.000032,0.000407
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000493,0.000016,0.000011,0.000166,0.000117,0.000803
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000263,0.000014,0.000001,0.000108,0.000030,0.000417
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000500,0.000014,0.000012,0.000143,0.000116,0.000784
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000249,0.000010,0.000000,0.000067,0.000016,0.000343
-[hpc-c11-node16.unitn.it:22459] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22453] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22453] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000486,0.000016,0.000011,0.000161,0.000116,0.000791
+Loading matrices from data/ans_batch/test2_ddg.txt
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000468,0.000017,0.000011,0.000165,0.000116,0.000777
+[hpc-c12-node03.unitn.it:151714] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151714] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
 The library attempted to open the following supporting CUDA libraries,
 but each of them failed.  CUDA-aware support is disabled.
@@ -158,48 +147,24 @@ in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
 of libcuda.so.1 to get passed this issue.
 --------------------------------------------------------------------------
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000316,0.000040,0.000000,0.001711,0.000023,0.002091
-[hpc-c11-node16.unitn.it:22462] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22460] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22461] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22463] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22466] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22465] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22464] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22451] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22458] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22451] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22458] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
---------------------------------------------------------------------------
-The library attempted to open the following supporting CUDA libraries,
-but each of them failed.  CUDA-aware support is disabled.
-libcuda.so.1: cannot open shared object file: No such file or directory
-libcuda.dylib: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
-If you are not interested in CUDA-aware support, then run with
---mca mpi_cuda_support 0 to suppress this message.  If you are interested
-in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
-of libcuda.so.1 to get passed this issue.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-The library attempted to open the following supporting CUDA libraries,
-but each of them failed.  CUDA-aware support is disabled.
-libcuda.so.1: cannot open shared object file: No such file or directory
-libcuda.dylib: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
-If you are not interested in CUDA-aware support, then run with
---mca mpi_cuda_support 0 to suppress this message.  If you are interested
-in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
-of libcuda.so.1 to get passed this issue.
---------------------------------------------------------------------------
-[hpc-c11-node16.unitn.it:22456] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22454] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22450] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22456] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22454] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000618,0.000019,0.000020,0.000228,0.000167,0.001053
+[hpc-c12-node03.unitn.it:151723] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151719] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151724] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151721] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151718] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151717] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151722] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151712] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151715] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151711] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151710] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151709] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151712] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151715] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151713] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151716] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
 The library attempted to open the following supporting CUDA libraries,
 but each of them failed.  CUDA-aware support is disabled.
@@ -224,23 +189,10 @@ If you are not interested in CUDA-aware support, then run with
 in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
 of libcuda.so.1 to get passed this issue.
 --------------------------------------------------------------------------
-[hpc-c11-node16.unitn.it:22450] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22457] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22452] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
---------------------------------------------------------------------------
-The library attempted to open the following supporting CUDA libraries,
-but each of them failed.  CUDA-aware support is disabled.
-libcuda.so.1: cannot open shared object file: No such file or directory
-libcuda.dylib: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
-/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
-If you are not interested in CUDA-aware support, then run with
---mca mpi_cuda_support 0 to suppress this message.  If you are interested
-in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
-of libcuda.so.1 to get passed this issue.
---------------------------------------------------------------------------
-[hpc-c11-node16.unitn.it:22457] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
-[hpc-c11-node16.unitn.it:22452] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151710] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151711] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151709] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+[hpc-c12-node03.unitn.it:151716] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
 The library attempted to open the following supporting CUDA libraries,
 but each of them failed.  CUDA-aware support is disabled.
@@ -265,24 +217,61 @@ If you are not interested in CUDA-aware support, then run with
 in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
 of libcuda.so.1 to get passed this issue.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca mpi_cuda_support 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+[hpc-c12-node03.unitn.it:151713] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca mpi_cuda_support 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca mpi_cuda_support 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000269,0.000021,0.000000,0.000203,0.000019,0.000514
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000493,0.000016,0.000011,0.000182,0.000125,0.000828
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000320,0.000016,0.000000,0.000082,0.000019,0.000437
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000511,0.000018,0.000013,0.000173,0.000117,0.000831
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000376,0.000021,0.000000,0.000194,0.000019,0.000610
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000480,0.000015,0.000012,0.000158,0.000124,0.000789
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000287,0.000020,0.000000,0.000180,0.000019,0.000506
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000510,0.000015,0.000013,0.000177,0.000130,0.000846
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000306,0.000038,0.000000,0.000191,0.000019,0.000555
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000592,0.000016,0.000013,0.000176,0.000142,0.000939
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000223,0.000021,0.000000,0.000179,0.000018,0.000442
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000597,0.000017,0.000015,0.000185,0.000167,0.000982
 Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,1,0.000281,0.000019,0.000000,0.000187,0.000019,0.000507
+Loaded similarity matrix of size 43 x 43
+data/ans_batch/test2_ddg.txt,43,3,1,0.000702,0.000023,0.000029,0.000245,0.000162,0.001162
