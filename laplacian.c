@@ -4,7 +4,7 @@
 #include <string.h>
 
 
-void load_matrix(const char *filename, double *S, int n, int rank){
+void load_square_matrix(const char *filename, double *S, int n, int rank){
     if (rank == 0){
         FILE *f = fopen(filename, "r");
         if (!f) {
