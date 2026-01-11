@@ -6,23 +6,21 @@
 #include "laplacian.h"
 #include "eigensolver.h"
 #include "kmeans.h"
+#include "metrics.h"
 
 int read_matrix_size(const char *filename) {
-    FILE *f = fopen(filename, "r");
-    if (!f) {
-        perror("Failed to open input file");
-        MPI_Abort(MPI_COMM_WORLD, 1);
-    }
+    FILE *f = fopen(filename,"r");
+    if(!f) { perror("Failed to open"); MPI_Abort(MPI_COMM_WORLD,1); }
 
-    int n;
-    if (fscanf(f, "%d", &n) != 1) {
-        fprintf(stderr, "Failed to read matrix size\n");
-        MPI_Abort(MPI_COMM_WORLD, 1);
+    int n = 0;
+    char line[4096];
+    while(fgets(line, sizeof(line), f)) {
+        if(line[0] != '\n') n++;
     }
 
     fclose(f);
     return n;
-}   
+}
 
 int main(int argc, char **argv) {
     MPI_Init(&argc, &argv);
@@ -98,18 +96,18 @@ int main(int argc, char **argv) {
 
     t_total = MPI_Wtime() - t_total;
 
+    double cluster_score = cluster_similarity_score(S, labels, n);
 
-    if (rank == 0) {
-        printf("%s,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f\n",
-               input_file, n, clusters, size,
-               t_load, t_degree, t_laplacian, t_eigen, t_kmeans, t_total);
+    if(rank==0){
+        printf("Cluster quality (intra/inter similarity ratio): %.4f\n", cluster_score);
 
-        // Save to CSV
-        FILE *f = fopen("output/timing.csv", "a");
-        if (f) {
-            fprintf(f, "%s,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f\n",
+        // Append to CSV
+        FILE *f = fopen("output/performance.csv", "a");
+        if(f){
+            fprintf(f, "%s,%d,%d,%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.4f\n",
                     input_file, n, clusters, size,
-                    t_load, t_degree, t_laplacian, t_eigen, t_kmeans, t_total);
+                    t_load, t_degree, t_laplacian, t_eigen, t_kmeans, t_total,
+                    cluster_score);
             fclose(f);
         }
     }

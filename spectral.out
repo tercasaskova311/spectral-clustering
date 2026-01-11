@@ -1,3 +1,3 @@
 Loading matrices from data/ans_batch/test2_ddg.txt
 Loaded similarity matrix of size 2 x 2
-data/ans_batch/test2_ddg.txt,2,3,16,0.000350,0.000937,0.000053,0.000124,0.002649,0.020790
+data/ans_batch/test2_ddg.txt,2,3,16,0.000378,0.026007,0.026004,0.000106,0.004894,0.129913
