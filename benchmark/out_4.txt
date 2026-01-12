@@ -1,19 +1,20 @@
-Loading matrices from data/ans_batch/test2_ddg.txt
-Loaded similarity matrix of size 43 x 43
 
 === Spectral Clustering Results ===
-Dataset: data/ans_batch/test2_ddg.txt
-Matrix size: 43 x 43
+Dataset: data/test_batch/test5.txt
+Matrix size: 23 x 23
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 4
 
 --- Timing ---
-Load matrix:    0.000589 s
-Degree matrix:  0.000091 s
-Laplacian:      0.000154 s
-Eigenvectors:   0.000210 s
-K-means:        0.004972 s
-Total time:     0.006678 s
+Load matrix:    0.000194 s
+Degree matrix:  0.000085 s
+Laplacian:      0.000124 s
+Eigenvectors:   0.000307 s
+K-means:        0.004966 s
+Total time:     0.005924 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.1250
 ===================================
 
