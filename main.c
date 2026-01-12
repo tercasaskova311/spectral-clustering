@@ -175,7 +175,7 @@ int main(int argc, char **argv) {
         if (pf) {
             if (write_header) {
                 fprintf(pf,
-                    "dataset,n,cols,k,clusters,mpi_procs,"
+                    "dataset,n,cols,k,clusters,mpi_procs,sigma,"
                     "t_load,t_degree,t_laplacian,t_eigen,t_kmeans,t_total,quality\n"
                 );
             }

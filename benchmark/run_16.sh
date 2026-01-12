@@ -9,4 +9,8 @@
 cd $PBS_O_WORKDIR
 module load mpich-3.2
 
-mpirun.actual -np 16 ./spectral_mpi data/test_batch/test5.txt 3 3
+INPUT_DIR=data
+
+for file in ${INPUT_DIR}/*.txt; do
+    mpirun.actual -np 16 ./spectral_mpi "$file" 3 3
+done
