@@ -1,3 +1,949 @@
+Loading matrices from data/matrix_100x100.txt
+Loaded similarity matrix of size 100 x 100
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_100x100.txt
+Matrix size: 100 x 100
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.002962 s
+Degree matrix:  0.000082 s
+Laplacian:      0.000396 s
+Eigenvectors:   0.004644 s
+K-means:        0.004473 s
+Total time:     0.013387 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 3.2114
+===================================
+
+Loaded feature matrix: 110 x 141
+Auto-computed sigma: 4824.4776
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_110x141.txt
+Input: 110 x 141 feature matrix
+Computed similarity matrix: 110 x 110
+Sigma (RBF bandwidth): 4824.4776
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.015102 s
+Degree matrix:  0.000063 s
+Laplacian:      0.000395 s
+Eigenvectors:   0.005483 s
+K-means:        0.004981 s
+Total time:     0.026940 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0026
+===================================
+
+Loaded feature matrix: 123 x 162
+Auto-computed sigma: 5204.3886
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_123x162.txt
+Input: 123 x 162 feature matrix
+Computed similarity matrix: 123 x 123
+Sigma (RBF bandwidth): 5204.3886
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.022701 s
+Degree matrix:  0.000094 s
+Laplacian:      0.000615 s
+Eigenvectors:   0.007058 s
+K-means:        0.004883 s
+Total time:     0.036222 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9982
+===================================
+
+Loaded feature matrix: 123 x 445
+Auto-computed sigma: 8631.5788
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_123x445.txt
+Input: 123 x 445 feature matrix
+Computed similarity matrix: 123 x 123
+Sigma (RBF bandwidth): 8631.5788
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.038767 s
+Degree matrix:  0.000081 s
+Laplacian:      0.000643 s
+Eigenvectors:   0.007212 s
+K-means:        0.004401 s
+Total time:     0.051906 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0004
+===================================
+
+Loaded feature matrix: 156 x 91
+Auto-computed sigma: 3875.6203
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_156x91.txt
+Input: 156 x 91 feature matrix
+Computed similarity matrix: 156 x 156
+Sigma (RBF bandwidth): 3875.6203
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.022974 s
+Degree matrix:  0.000067 s
+Laplacian:      0.001090 s
+Eigenvectors:   0.013933 s
+K-means:        0.005029 s
+Total time:     0.044642 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9983
+===================================
+
+Loaded feature matrix: 159 x 278
+Auto-computed sigma: 6802.0947
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_159x278.txt
+Input: 159 x 278 feature matrix
+Computed similarity matrix: 159 x 159
+Sigma (RBF bandwidth): 6802.0947
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.040925 s
+Degree matrix:  0.000063 s
+Laplacian:      0.001343 s
+Eigenvectors:   0.014719 s
+K-means:        0.005078 s
+Total time:     0.063669 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9987
+===================================
+
+Loaded feature matrix: 179 x 255
+Auto-computed sigma: 6522.9394
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_179x255.txt
+Input: 179 x 255 feature matrix
+Computed similarity matrix: 179 x 179
+Sigma (RBF bandwidth): 6522.9394
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.052161 s
+Degree matrix:  0.000081 s
+Laplacian:      0.001284 s
+Eigenvectors:   0.020687 s
+K-means:        0.004931 s
+Total time:     0.080882 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0002
+===================================
+
+Loaded feature matrix: 196 x 494
+Auto-computed sigma: 9081.8312
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_196x494.txt
+Input: 196 x 494 feature matrix
+Computed similarity matrix: 196 x 196
+Sigma (RBF bandwidth): 9081.8312
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.081041 s
+Degree matrix:  0.000090 s
+Laplacian:      0.001585 s
+Eigenvectors:   0.025001 s
+K-means:        0.006104 s
+Total time:     0.115718 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0003
+===================================
+
+Loaded feature matrix: 200 x 411
+Auto-computed sigma: 8273.8263
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_200x411.txt
+Input: 200 x 411 feature matrix
+Computed similarity matrix: 200 x 200
+Sigma (RBF bandwidth): 8273.8263
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.074531 s
+Degree matrix:  0.000095 s
+Laplacian:      0.001732 s
+Eigenvectors:   0.025660 s
+K-means:        0.004013 s
+Total time:     0.107945 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9996
+===================================
+
+Loaded feature matrix: 201 x 636
+Auto-computed sigma: 10305.5938
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_201x636.txt
+Input: 201 x 636 feature matrix
+Computed similarity matrix: 201 x 201
+Sigma (RBF bandwidth): 10305.5938
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.096668 s
+Degree matrix:  0.000092 s
+Laplacian:      0.001588 s
+Eigenvectors:   0.026120 s
+K-means:        0.005125 s
+Total time:     0.131431 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0002
+===================================
+
+Loaded feature matrix: 205 x 78
+Auto-computed sigma: 3590.4118
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_205x78.txt
+Input: 205 x 78 feature matrix
+Computed similarity matrix: 205 x 205
+Sigma (RBF bandwidth): 3590.4118
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.036141 s
+Degree matrix:  0.000092 s
+Laplacian:      0.001785 s
+Eigenvectors:   0.028165 s
+K-means:        0.005219 s
+Total time:     0.073312 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0007
+===================================
+
+Loaded feature matrix: 208 x 53
+Auto-computed sigma: 2972.5467
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_208x53.txt
+Input: 208 x 53 feature matrix
+Computed similarity matrix: 208 x 208
+Sigma (RBF bandwidth): 2972.5467
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.031499 s
+Degree matrix:  0.000089 s
+Laplacian:      0.001809 s
+Eigenvectors:   0.029130 s
+K-means:        0.004975 s
+Total time:     0.069433 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0007
+===================================
+
+Loaded feature matrix: 227 x 624
+Auto-computed sigma: 10192.9607
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_227x624.txt
+Input: 227 x 624 feature matrix
+Computed similarity matrix: 227 x 227
+Sigma (RBF bandwidth): 10192.9607
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.111381 s
+Degree matrix:  0.000104 s
+Laplacian:      0.001955 s
+Eigenvectors:   0.035444 s
+K-means:        0.004934 s
+Total time:     0.154899 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9998
+===================================
+
+Loaded feature matrix: 232 x 81
+Auto-computed sigma: 3670.9390
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_232x81.txt
+Input: 232 x 81 feature matrix
+Computed similarity matrix: 232 x 232
+Sigma (RBF bandwidth): 3670.9390
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.038450 s
+Degree matrix:  0.000096 s
+Laplacian:      0.002159 s
+Eigenvectors:   0.038804 s
+K-means:        0.005214 s
+Total time:     0.085986 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9983
+===================================
+
+Loaded feature matrix: 249 x 263
+Auto-computed sigma: 6608.6249
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_249x263.txt
+Input: 249 x 263 feature matrix
+Computed similarity matrix: 249 x 249
+Sigma (RBF bandwidth): 6608.6249
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.067150 s
+Degree matrix:  0.000126 s
+Laplacian:      0.002282 s
+Eigenvectors:   0.046686 s
+K-means:        0.006574 s
+Total time:     0.124195 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0005
+===================================
+
+Loaded feature matrix: 257 x 286
+Auto-computed sigma: 6897.2737
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_257x286.txt
+Input: 257 x 286 feature matrix
+Computed similarity matrix: 257 x 257
+Sigma (RBF bandwidth): 6897.2737
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.073719 s
+Degree matrix:  0.000160 s
+Laplacian:      0.002558 s
+Eigenvectors:   0.049560 s
+K-means:        0.003894 s
+Total time:     0.131524 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0000
+===================================
+
+Loaded feature matrix: 272 x 371
+Auto-computed sigma: 7882.7842
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_272x371.txt
+Input: 272 x 371 feature matrix
+Computed similarity matrix: 272 x 272
+Sigma (RBF bandwidth): 7882.7842
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.093644 s
+Degree matrix:  0.000157 s
+Laplacian:      0.002673 s
+Eigenvectors:   0.060122 s
+K-means:        0.009675 s
+Total time:     0.167465 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0001
+===================================
+
+Loaded feature matrix: 273 x 395
+Auto-computed sigma: 8104.4700
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_273x395.txt
+Input: 273 x 395 feature matrix
+Computed similarity matrix: 273 x 273
+Sigma (RBF bandwidth): 8104.4700
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.099565 s
+Degree matrix:  0.000174 s
+Laplacian:      0.002775 s
+Eigenvectors:   0.057902 s
+K-means:        0.009684 s
+Total time:     0.171284 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9993
+===================================
+
+Loaded feature matrix: 274 x 436
+Auto-computed sigma: 8529.7179
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_274x436.txt
+Input: 274 x 436 feature matrix
+Computed similarity matrix: 274 x 274
+Sigma (RBF bandwidth): 8529.7179
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.107599 s
+Degree matrix:  0.000171 s
+Laplacian:      0.002658 s
+Eigenvectors:   0.059973 s
+K-means:        0.005022 s
+Total time:     0.176505 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0008
+===================================
+
+Loaded feature matrix: 290 x 482
+Auto-computed sigma: 8958.6086
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_290x482.txt
+Input: 290 x 482 feature matrix
+Computed similarity matrix: 290 x 290
+Sigma (RBF bandwidth): 8958.6086
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.124093 s
+Degree matrix:  0.000174 s
+Laplacian:      0.002928 s
+Eigenvectors:   0.069661 s
+K-means:        0.009663 s
+Total time:     0.207961 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9999
+===================================
+
+Loaded feature matrix: 294 x 126
+Auto-computed sigma: 4581.6758
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_294x126.txt
+Input: 294 x 126 feature matrix
+Computed similarity matrix: 294 x 294
+Sigma (RBF bandwidth): 4581.6758
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.086248 s
+Degree matrix:  0.000167 s
+Laplacian:      0.003245 s
+Eigenvectors:   0.071340 s
+K-means:        0.009483 s
+Total time:     0.171957 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9986
+===================================
+
+Loaded feature matrix: 352 x 247
+Auto-computed sigma: 6394.8603
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_352x247.txt
+Input: 352 x 247 feature matrix
+Computed similarity matrix: 352 x 352
+Sigma (RBF bandwidth): 6394.8603
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.096197 s
+Degree matrix:  0.000233 s
+Laplacian:      0.004208 s
+Eigenvectors:   0.118573 s
+K-means:        0.009482 s
+Total time:     0.229688 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9995
+===================================
+
+Loaded feature matrix: 357 x 711
+Auto-computed sigma: 10874.6229
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_357x711.txt
+Input: 357 x 711 feature matrix
+Computed similarity matrix: 357 x 357
+Sigma (RBF bandwidth): 10874.6229
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.236008 s
+Degree matrix:  0.000255 s
+Laplacian:      0.004256 s
+Eigenvectors:   0.125420 s
+K-means:        0.004579 s
+Total time:     0.371613 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9998
+===================================
+
+Loaded feature matrix: 371 x 226
+Auto-computed sigma: 6136.0122
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_371x226.txt
+Input: 371 x 226 feature matrix
+Computed similarity matrix: 371 x 371
+Sigma (RBF bandwidth): 6136.0122
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.096139 s
+Degree matrix:  0.000268 s
+Laplacian:      0.004169 s
+Eigenvectors:   0.146206 s
+K-means:        0.009771 s
+Total time:     0.257507 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0008
+===================================
+
+Error reading feature matrix at row 456, col 156
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+Loaded feature matrix: 416 x 873
+Auto-computed sigma: 12076.9389
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_416x873.txt
+Input: 416 x 873 feature matrix
+Computed similarity matrix: 416 x 416
+Sigma (RBF bandwidth): 12076.9389
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.340961 s
+Degree matrix:  0.000308 s
+Laplacian:      0.005049 s
+Eigenvectors:   0.192401 s
+K-means:        0.009755 s
+Total time:     0.549237 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0000
+===================================
+
+Loaded feature matrix: 424 x 486
+Auto-computed sigma: 8991.3646
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_424x486.txt
+Input: 424 x 486 feature matrix
+Computed similarity matrix: 424 x 424
+Sigma (RBF bandwidth): 8991.3646
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.223370 s
+Degree matrix:  0.000253 s
+Laplacian:      0.005044 s
+Eigenvectors:   0.213443 s
+K-means:        0.009736 s
+Total time:     0.452813 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0002
+===================================
+
+Loaded feature matrix: 435 x 821
+Auto-computed sigma: 11689.6292
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_435x821.txt
+Input: 435 x 821 feature matrix
+Computed similarity matrix: 435 x 435
+Sigma (RBF bandwidth): 11689.6292
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.349141 s
+Degree matrix:  0.000365 s
+Laplacian:      0.006408 s
+Eigenvectors:   0.224828 s
+K-means:        0.008955 s
+Total time:     0.590505 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9998
+===================================
+
+Loaded feature matrix: 437 x 474
+Auto-computed sigma: 8889.5782
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_437x474.txt
+Input: 437 x 474 feature matrix
+Computed similarity matrix: 437 x 437
+Sigma (RBF bandwidth): 8889.5782
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.214274 s
+Degree matrix:  0.000285 s
+Laplacian:      0.006505 s
+Eigenvectors:   0.221137 s
+K-means:        0.005063 s
+Total time:     0.448005 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0004
+===================================
+
+Loaded feature matrix: 447 x 648
+Auto-computed sigma: 10389.1282
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_447x648.txt
+Input: 447 x 648 feature matrix
+Computed similarity matrix: 447 x 447
+Sigma (RBF bandwidth): 10389.1282
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.291268 s
+Degree matrix:  0.000358 s
+Laplacian:      0.006864 s
+Eigenvectors:   0.236510 s
+K-means:        0.009238 s
+Total time:     0.544987 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0001
+===================================
+
+Error reading feature matrix at row 509, col 657
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+Loaded feature matrix: 497 x 203
+Auto-computed sigma: 5818.3137
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_497x203.txt
+Input: 497 x 203 feature matrix
+Computed similarity matrix: 497 x 497
+Sigma (RBF bandwidth): 5818.3137
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.134160 s
+Degree matrix:  0.000379 s
+Laplacian:      0.006346 s
+Eigenvectors:   0.318328 s
+K-means:        0.009744 s
+Total time:     0.469839 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0004
+===================================
+
+Loaded feature matrix: 50 x 25
+Auto-computed sigma: 2008.0940
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_50x25.txt
+Input: 50 x 25 feature matrix
+Computed similarity matrix: 50 x 50
+Sigma (RBF bandwidth): 2008.0940
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.001922 s
+Degree matrix:  0.000051 s
+Laplacian:      0.000161 s
+Eigenvectors:   0.000961 s
+K-means:        0.004965 s
+Total time:     0.008444 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0064
+===================================
+
+Loaded feature matrix: 6 x 100
+Auto-computed sigma: 4206.8968
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_6x100.txt
+Input: 6 x 100 feature matrix
+Computed similarity matrix: 6 x 6
+Sigma (RBF bandwidth): 4206.8968
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.000417 s
+Degree matrix:  0.000084 s
+Laplacian:      0.000045 s
+Eigenvectors:   0.000181 s
+K-means:        0.002796 s
+Total time:     0.003729 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0242
+===================================
+
+Error reading feature matrix at row 847, col 821
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+Loaded feature matrix: 765 x 773
+Auto-computed sigma: 11344.5284
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_765x773.txt
+Input: 765 x 773 feature matrix
+Computed similarity matrix: 765 x 765
+Sigma (RBF bandwidth): 11344.5284
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.824624 s
+Degree matrix:  0.000676 s
+Laplacian:      0.011791 s
+Eigenvectors:   1.101511 s
+K-means:        0.004916 s
+Total time:     1.945021 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0001
+===================================
+
+Loaded feature matrix: 810 x 680
+Auto-computed sigma: 10627.4697
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_810x680.txt
+Input: 810 x 680 feature matrix
+Computed similarity matrix: 810 x 810
+Sigma (RBF bandwidth): 10627.4697
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.802945 s
+Degree matrix:  0.000859 s
+Laplacian:      0.013081 s
+Eigenvectors:   1.285350 s
+K-means:        0.004678 s
+Total time:     2.107872 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 0.9999
+===================================
+
+Loaded feature matrix: 82 x 265
+Auto-computed sigma: 6625.3773
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_82x265.txt
+Input: 82 x 265 feature matrix
+Computed similarity matrix: 82 x 82
+Sigma (RBF bandwidth): 6625.3773
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.018160 s
+Degree matrix:  0.000042 s
+Laplacian:      0.000282 s
+Eigenvectors:   0.002731 s
+K-means:        0.004885 s
+Total time:     0.026653 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0015
+===================================
+
+Error reading feature matrix at row 852, col 474
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+Loaded feature matrix: 852 x 739
+Auto-computed sigma: 11097.3654
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_852x739.txt
+Input: 852 x 739 feature matrix
+Computed similarity matrix: 852 x 852
+Sigma (RBF bandwidth): 11097.3654
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.957248 s
+Degree matrix:  0.000917 s
+Laplacian:      0.015174 s
+Eigenvectors:   1.501017 s
+K-means:        0.004930 s
+Total time:     2.479980 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0000
+===================================
+
+Error reading feature matrix at row 882, col 182
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+Error reading feature matrix at row 1007, col 349
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+Loaded feature matrix: 929 x 622
+Auto-computed sigma: 10172.9898
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_929x622.txt
+Input: 929 x 622 feature matrix
+Computed similarity matrix: 929 x 929
+Sigma (RBF bandwidth): 10172.9898
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.949072 s
+Degree matrix:  0.001036 s
+Laplacian:      0.017138 s
+Eigenvectors:   1.947947 s
+K-means:        0.004417 s
+Total time:     2.920585 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0000
+===================================
+
+Loaded feature matrix: 929 x 701
+Auto-computed sigma: 10807.3284
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_929x701.txt
+Input: 929 x 701 feature matrix
+Computed similarity matrix: 929 x 929
+Sigma (RBF bandwidth): 10807.3284
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    1.063567 s
+Degree matrix:  0.001028 s
+Laplacian:      0.016339 s
+Eigenvectors:   1.958194 s
+K-means:        0.004416 s
+Total time:     3.044651 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0000
+===================================
+
+Loaded feature matrix: 95 x 73
+Auto-computed sigma: 3443.1123
+
+=== Spectral Clustering Results ===
+Dataset: data/matrix_95x73.txt
+Input: 95 x 73 feature matrix
+Computed similarity matrix: 95 x 95
+Sigma (RBF bandwidth): 3443.1123
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.021424 s
+Degree matrix:  0.000104 s
+Laplacian:      0.000345 s
+Eigenvectors:   0.003865 s
+K-means:        0.004379 s
+Total time:     0.030640 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0007
+===================================
+
 Loading matrices from data/test10.txt
 Loaded similarity matrix of size 6 x 6
 
@@ -9,12 +955,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000309 s
-Degree matrix:  0.000075 s
-Laplacian:      0.000043 s
-Eigenvectors:   0.000265 s
-K-means:        0.003307 s
-Total time:     0.004141 s
+Load matrix:    0.000235 s
+Degree matrix:  0.000079 s
+Laplacian:      0.000046 s
+Eigenvectors:   0.000176 s
+K-means:        0.004977 s
+Total time:     0.005718 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.9406
@@ -31,12 +977,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000352 s
-Degree matrix:  0.000099 s
-Laplacian:      0.000051 s
-Eigenvectors:   0.000386 s
-K-means:        0.004017 s
-Total time:     0.005102 s
+Load matrix:    0.000222 s
+Degree matrix:  0.000083 s
+Laplacian:      0.000046 s
+Eigenvectors:   0.000172 s
+K-means:        0.004973 s
+Total time:     0.005684 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.0912
@@ -53,12 +999,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000443 s
-Degree matrix:  0.000078 s
-Laplacian:      0.000065 s
-Eigenvectors:   0.000382 s
-K-means:        0.002623 s
-Total time:     0.003749 s
+Load matrix:    0.000258 s
+Degree matrix:  0.000082 s
+Laplacian:      0.000056 s
+Eigenvectors:   0.000199 s
+K-means:        0.005094 s
+Total time:     0.005891 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): -1.2247
@@ -75,12 +1021,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000399 s
-Degree matrix:  0.000099 s
-Laplacian:      0.000065 s
-Eigenvectors:   0.000427 s
-K-means:        0.003207 s
-Total time:     0.004341 s
+Load matrix:    0.000168 s
+Degree matrix:  0.000097 s
+Laplacian:      0.000111 s
+Eigenvectors:   0.000192 s
+K-means:        0.004977 s
+Total time:     0.005850 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.9451
@@ -97,12 +1043,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000424 s
-Degree matrix:  0.000146 s
-Laplacian:      0.000139 s
-Eigenvectors:   0.000434 s
-K-means:        0.003660 s
-Total time:     0.005020 s
+Load matrix:    0.000278 s
+Degree matrix:  0.000083 s
+Laplacian:      0.000055 s
+Eigenvectors:   0.000193 s
+K-means:        0.004975 s
+Total time:     0.005774 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): -26.9804
@@ -119,12 +1065,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000396 s
-Degree matrix:  0.000090 s
-Laplacian:      0.000056 s
-Eigenvectors:   0.000427 s
-K-means:        0.003489 s
-Total time:     0.004609 s
+Load matrix:    0.000251 s
+Degree matrix:  0.000069 s
+Laplacian:      0.000062 s
+Eigenvectors:   0.000211 s
+K-means:        0.003706 s
+Total time:     0.004478 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 14.0791
@@ -143,12 +1089,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000468 s
-Degree matrix:  0.000094 s
-Laplacian:      0.000032 s
-Eigenvectors:   0.000331 s
-K-means:        0.003723 s
-Total time:     0.004800 s
+Load matrix:    0.000262 s
+Degree matrix:  0.000084 s
+Laplacian:      0.000044 s
+Eigenvectors:   0.000192 s
+K-means:        0.004973 s
+Total time:     0.005755 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): -0.8712
@@ -165,18 +1111,18 @@ Auto-computed sigma: 3.8247
 Dataset: data/test1.txt
 Input: 10 x 5 feature matrix
 Computed similarity matrix: 10 x 10
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 3.8247
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000413 s
-Degree matrix:  0.000093 s
-Laplacian:      0.000053 s
-Eigenvectors:   0.000374 s
-K-means:        0.003405 s
-Total time:     0.004466 s
+Load matrix:    0.000276 s
+Degree matrix:  0.000074 s
+Laplacian:      0.000086 s
+Eigenvectors:   0.000192 s
+K-means:        0.004995 s
+Total time:     0.005798 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.0086
@@ -193,12 +1139,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000352 s
-Degree matrix:  0.000086 s
-Laplacian:      0.000029 s
-Eigenvectors:   0.000395 s
-K-means:        0.003006 s
-Total time:     0.004011 s
+Load matrix:    0.000229 s
+Degree matrix:  0.000091 s
+Laplacian:      0.000048 s
+Eigenvectors:   0.000204 s
+K-means:        0.004997 s
+Total time:     0.005769 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.2116
@@ -219,12 +1165,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000300 s
-Degree matrix:  0.000092 s
-Laplacian:      0.000060 s
-Eigenvectors:   0.000352 s
-K-means:        0.003845 s
-Total time:     0.004782 s
+Load matrix:    0.012839 s
+Degree matrix:  0.000045 s
+Laplacian:      0.000061 s
+Eigenvectors:   0.000211 s
+K-means:        0.004974 s
+Total time:     0.018413 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 3.1116
@@ -241,12 +1187,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000414 s
-Degree matrix:  0.000110 s
-Laplacian:      0.000050 s
-Eigenvectors:   0.000400 s
-K-means:        0.003634 s
-Total time:     0.004774 s
+Load matrix:    0.025328 s
+Degree matrix:  0.000079 s
+Laplacian:      0.000047 s
+Eigenvectors:   0.000222 s
+K-means:        0.004978 s
+Total time:     0.030871 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 3.8714
@@ -263,12 +1209,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000428 s
-Degree matrix:  0.000089 s
-Laplacian:      0.000035 s
-Eigenvectors:   0.000339 s
-K-means:        0.003313 s
-Total time:     0.004350 s
+Load matrix:    0.000746 s
+Degree matrix:  0.000085 s
+Laplacian:      0.000078 s
+Eigenvectors:   0.000192 s
+K-means:        0.004977 s
+Total time:     0.006256 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.3526
@@ -285,12 +1231,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000347 s
-Degree matrix:  0.000087 s
-Laplacian:      0.000032 s
-Eigenvectors:   0.000380 s
-K-means:        0.003179 s
-Total time:     0.004168 s
+Load matrix:    0.000247 s
+Degree matrix:  0.000083 s
+Laplacian:      0.000046 s
+Eigenvectors:   0.000185 s
+K-means:        0.004914 s
+Total time:     0.005686 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): -5.7176
@@ -307,12 +1253,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000574 s
-Degree matrix:  0.000072 s
-Laplacian:      0.000043 s
-Eigenvectors:   0.000245 s
-K-means:        0.003521 s
-Total time:     0.004607 s
+Load matrix:    0.000191 s
+Degree matrix:  0.000079 s
+Laplacian:      0.000050 s
+Eigenvectors:   0.000178 s
+K-means:        0.003979 s
+Total time:     0.004668 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): -0.0000
@@ -329,12 +1275,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000440 s
-Degree matrix:  0.000085 s
-Laplacian:      0.000067 s
-Eigenvectors:   0.000393 s
-K-means:        0.002684 s
-Total time:     0.003846 s
+Load matrix:    0.000261 s
+Degree matrix:  0.000088 s
+Laplacian:      0.000059 s
+Eigenvectors:   0.000208 s
+K-means:        0.004997 s
+Total time:     0.005811 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): -0.9181
@@ -351,12 +1297,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000312 s
-Degree matrix:  0.000085 s
-Laplacian:      0.000026 s
-Eigenvectors:   0.000343 s
-K-means:        0.003210 s
-Total time:     0.004116 s
+Load matrix:    0.000229 s
+Degree matrix:  0.000084 s
+Laplacian:      0.000045 s
+Eigenvectors:   0.000189 s
+K-means:        0.004470 s
+Total time:     0.005221 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.7146
@@ -369,18 +1315,18 @@ Auto-computed sigma: 3.9149
 Dataset: data/test2.txt
 Input: 43 x 4 feature matrix
 Computed similarity matrix: 43 x 43
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 3.9149
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.002870 s
-Degree matrix:  0.000100 s
-Laplacian:      0.000159 s
-Eigenvectors:   0.002071 s
-K-means:        0.003872 s
-Total time:     0.009805 s
+Load matrix:    0.000992 s
+Degree matrix:  0.000035 s
+Laplacian:      0.000144 s
+Eigenvectors:   0.000755 s
+K-means:        0.004985 s
+Total time:     0.007212 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.1000
@@ -397,12 +1343,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.001287 s
-Degree matrix:  0.000067 s
-Laplacian:      0.000144 s
-Eigenvectors:   0.001023 s
-K-means:        0.003077 s
-Total time:     0.006186 s
+Load matrix:    0.000623 s
+Degree matrix:  0.000065 s
+Laplacian:      0.000117 s
+Eigenvectors:   0.000685 s
+K-means:        0.004003 s
+Total time:     0.006183 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 2.2640
@@ -419,12 +1365,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000406 s
-Degree matrix:  0.000094 s
-Laplacian:      0.000060 s
-Eigenvectors:   0.000440 s
-K-means:        0.003559 s
-Total time:     0.004713 s
+Load matrix:    0.000185 s
+Degree matrix:  0.000095 s
+Laplacian:      0.000108 s
+Eigenvectors:   0.000202 s
+K-means:        0.004976 s
+Total time:     0.005874 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): -1.2247
@@ -441,12 +1387,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000298 s
-Degree matrix:  0.000095 s
-Laplacian:      0.000043 s
-Eigenvectors:   0.000296 s
-K-means:        0.003307 s
-Total time:     0.004214 s
+Load matrix:    0.000248 s
+Degree matrix:  0.000083 s
+Laplacian:      0.000042 s
+Eigenvectors:   0.000172 s
+K-means:        0.004960 s
+Total time:     0.005706 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.0000
@@ -459,18 +1405,18 @@ Auto-computed sigma: 4.4316
 Dataset: data/test3.txt
 Input: 15 x 6 feature matrix
 Computed similarity matrix: 15 x 15
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 4.4316
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000318 s
-Degree matrix:  0.000071 s
-Laplacian:      0.000038 s
-Eigenvectors:   0.000240 s
-K-means:        0.002996 s
-Total time:     0.003843 s
+Load matrix:    0.000282 s
+Degree matrix:  0.000073 s
+Laplacian:      0.000036 s
+Eigenvectors:   0.000222 s
+K-means:        0.004971 s
+Total time:     0.005869 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.0437
@@ -487,12 +1433,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000408 s
-Degree matrix:  0.000094 s
-Laplacian:      0.000084 s
-Eigenvectors:   0.000469 s
-K-means:        0.003193 s
-Total time:     0.004425 s
+Load matrix:    0.000356 s
+Degree matrix:  0.000073 s
+Laplacian:      0.000082 s
+Eigenvectors:   0.000223 s
+K-means:        0.004975 s
+Total time:     0.005925 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.9312
@@ -505,18 +1451,18 @@ Auto-computed sigma: 4.0100
 Dataset: data/test4.txt
 Input: 14 x 4 feature matrix
 Computed similarity matrix: 14 x 14
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 4.0100
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000352 s
-Degree matrix:  0.000087 s
-Laplacian:      0.000055 s
-Eigenvectors:   0.000460 s
-K-means:        0.003321 s
-Total time:     0.004440 s
+Load matrix:    0.000262 s
+Degree matrix:  0.000067 s
+Laplacian:      0.000036 s
+Eigenvectors:   0.000221 s
+K-means:        0.004972 s
+Total time:     0.005860 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.8781
@@ -533,12 +1479,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000333 s
-Degree matrix:  0.000101 s
-Laplacian:      0.000063 s
-Eigenvectors:   0.000455 s
-K-means:        0.003521 s
-Total time:     0.004666 s
+Load matrix:    0.000255 s
+Degree matrix:  0.000074 s
+Laplacian:      0.000085 s
+Eigenvectors:   0.000217 s
+K-means:        0.003959 s
+Total time:     0.004784 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.8184
@@ -551,18 +1497,18 @@ Auto-computed sigma: 2.9702
 Dataset: data/test5.txt
 Input: 23 x 3 feature matrix
 Computed similarity matrix: 23 x 23
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 2.9702
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000657 s
-Degree matrix:  0.000094 s
-Laplacian:      0.000106 s
-Eigenvectors:   0.000715 s
-K-means:        0.003585 s
-Total time:     0.005369 s
+Load matrix:    0.000326 s
+Degree matrix:  0.000077 s
+Laplacian:      0.000107 s
+Eigenvectors:   0.000311 s
+K-means:        0.004381 s
+Total time:     0.005463 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.0128
@@ -579,12 +1525,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000653 s
-Degree matrix:  0.000094 s
-Laplacian:      0.000110 s
-Eigenvectors:   0.000732 s
-K-means:        0.003351 s
-Total time:     0.005085 s
+Load matrix:    0.000261 s
+Degree matrix:  0.000074 s
+Laplacian:      0.000137 s
+Eigenvectors:   0.000317 s
+K-means:        0.004967 s
+Total time:     0.005994 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.7494
@@ -597,18 +1543,18 @@ Auto-computed sigma: 3.3110
 Dataset: data/test6.txt
 Input: 37 x 3 feature matrix
 Computed similarity matrix: 37 x 37
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 3.3110
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.001846 s
-Degree matrix:  0.000095 s
-Laplacian:      0.000144 s
-Eigenvectors:   0.000963 s
-K-means:        0.003169 s
-Total time:     0.006412 s
+Load matrix:    0.000726 s
+Degree matrix:  0.000036 s
+Laplacian:      0.000133 s
+Eigenvectors:   0.000591 s
+K-means:        0.004973 s
+Total time:     0.006764 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.0089
@@ -625,12 +1571,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000811 s
-Degree matrix:  0.000070 s
-Laplacian:      0.000122 s
-Eigenvectors:   0.000881 s
-K-means:        0.002896 s
-Total time:     0.004935 s
+Load matrix:    0.000581 s
+Degree matrix:  0.000075 s
+Laplacian:      0.000143 s
+Eigenvectors:   0.000602 s
+K-means:        0.004578 s
+Total time:     0.006225 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.1151
@@ -643,18 +1589,18 @@ Auto-computed sigma: 3.9786
 Dataset: data/test7.txt
 Input: 40 x 4 feature matrix
 Computed similarity matrix: 40 x 40
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 3.9786
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.002343 s
-Degree matrix:  0.000098 s
-Laplacian:      0.000163 s
-Eigenvectors:   0.001230 s
-K-means:        0.003292 s
-Total time:     0.007325 s
+Load matrix:    0.000843 s
+Degree matrix:  0.000078 s
+Laplacian:      0.000137 s
+Eigenvectors:   0.000663 s
+K-means:        0.005000 s
+Total time:     0.007016 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.9918
@@ -671,12 +1617,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.001226 s
-Degree matrix:  0.000078 s
-Laplacian:      0.000156 s
-Eigenvectors:   0.001474 s
-K-means:        0.003976 s
-Total time:     0.007180 s
+Load matrix:    0.000568 s
+Degree matrix:  0.000075 s
+Laplacian:      0.000140 s
+Eigenvectors:   0.000632 s
+K-means:        0.004973 s
+Total time:     0.006652 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 1.4721
@@ -693,12 +1639,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000303 s
-Degree matrix:  0.000094 s
-Laplacian:      0.000054 s
-Eigenvectors:   0.000358 s
-K-means:        0.003936 s
-Total time:     0.004913 s
+Load matrix:    0.000159 s
+Degree matrix:  0.000093 s
+Laplacian:      0.000100 s
+Eigenvectors:   0.000181 s
+K-means:        0.005024 s
+Total time:     0.005864 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): -1.4785
@@ -711,18 +1657,18 @@ Auto-computed sigma: 4.6636
 Dataset: data/test8.txt
 Input: 30 x 6 feature matrix
 Computed similarity matrix: 30 x 30
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 4.6636
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.001124 s
-Degree matrix:  0.000070 s
-Laplacian:      0.000116 s
-Eigenvectors:   0.000813 s
-K-means:        0.003299 s
-Total time:     0.005662 s
+Load matrix:    0.000614 s
+Degree matrix:  0.000045 s
+Laplacian:      0.000144 s
+Eigenvectors:   0.000395 s
+K-means:        0.004049 s
+Total time:     0.005461 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.9613
@@ -739,12 +1685,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000601 s
-Degree matrix:  0.000084 s
-Laplacian:      0.000104 s
-Eigenvectors:   0.000571 s
-K-means:        0.003430 s
-Total time:     0.004992 s
+Load matrix:    0.000814 s
+Degree matrix:  0.000073 s
+Laplacian:      0.000130 s
+Eigenvectors:   0.000370 s
+K-means:        0.004969 s
+Total time:     0.006597 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.4810
@@ -757,18 +1703,18 @@ Auto-computed sigma: 3.8130
 Dataset: data/test9.txt
 Input: 22 x 4 feature matrix
 Computed similarity matrix: 22 x 22
-Sigma (RBF bandwidth): -1.0000
+Sigma (RBF bandwidth): 3.8130
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000612 s
-Degree matrix:  0.000101 s
-Laplacian:      0.000124 s
-Eigenvectors:   0.000670 s
-K-means:        0.003465 s
-Total time:     0.005166 s
+Load matrix:    0.000324 s
+Degree matrix:  0.000068 s
+Laplacian:      0.000131 s
+Eigenvectors:   0.000284 s
+K-means:        0.004970 s
+Total time:     0.006046 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.9123
@@ -785,12 +1731,12 @@ Clusters: 3
 MPI processes: 2
 
 --- Timing ---
-Load matrix:    0.000576 s
-Degree matrix:  0.000095 s
-Laplacian:      0.000115 s
-Eigenvectors:   0.000632 s
-K-means:        0.003484 s
-Total time:     0.005077 s
+Load matrix:    0.000312 s
+Degree matrix:  0.000070 s
+Laplacian:      0.000130 s
+Eigenvectors:   0.000286 s
+K-means:        0.004898 s
+Total time:     0.005922 s
 
 --- Quality ---
 Cluster quality (intra/inter ratio): 0.5714

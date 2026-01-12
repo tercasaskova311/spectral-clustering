@@ -59,7 +59,6 @@ int main(int argc, char **argv) {
     MPI_Bcast(&is_feature, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(&k, 1, MPI_INT, 0, MPI_COMM_WORLD);           
     MPI_Bcast(&clusters, 1, MPI_INT, 0, MPI_COMM_WORLD);
-    MPI_Bcast(&sigma, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
     if (rank == 0) mkdir("output", 0755);
     MPI_Barrier(MPI_COMM_WORLD); 
@@ -92,9 +91,10 @@ int main(int argc, char **argv) {
             if (!X) MPI_Abort(MPI_COMM_WORLD, 1);
 
             load_feature_matrix(input_file, X, n, cols);
-            compute_similarity_matrix(X, S, n, cols, sigma);
+            compute_similarity_matrix(X, S, n, cols, &sigma);
             free(X);
         }
+        MPI_Bcast(&sigma, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
         MPI_Bcast(S, n * n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
     } else {
         load_square_matrix(input_file, S, n, rank);  // ALL RANKS call this
@@ -167,11 +167,11 @@ int main(int argc, char **argv) {
         // Append to CSV
         int write_header = 0;
         struct stat st;
-        if (stat("output/performance.csv", &st) != 0) {
+        if (stat("output/performance_2.csv", &st) != 0) {
             write_header = 1;
         }
 
-        FILE *pf = fopen("output/performance.csv", "a");
+        FILE *pf = fopen("output/performance_2.csv", "a");
         if (pf) {
             if (write_header) {
                 fprintf(pf,
