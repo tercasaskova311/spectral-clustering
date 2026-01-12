@@ -42,14 +42,14 @@ double compute_sigma_median_heuristic(double *X, int n, int m) {
     return median_dist > 0.0 ? median_dist : 1.0;
 }
 
-void compute_similarity_matrix(double *X, double *S, int n, int m, double sigma){
+void compute_similarity_matrix(double *X, double *S, int n, int m, double *sigma){
     // If sigma not provided (<=0), compute automatically
-    if (sigma <= 0.0) {
-        sigma = compute_sigma_median_heuristic(X, n, m);
-        printf("Auto-computed sigma: %.4f\n", sigma);
+    if (*sigma <= 0.0) {
+        *sigma = compute_sigma_median_heuristic(X, n, m);
+        printf("Auto-computed sigma: %.4f\n", *sigma);
     }
     
-    double two_sigma_sq = 2.0 * sigma * sigma;
+    double two_sigma_sq = 2.0 * (*sigma) * (*sigma);
     
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
