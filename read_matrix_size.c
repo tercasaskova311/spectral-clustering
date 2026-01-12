@@ -5,39 +5,39 @@
 #include <math.h>
 
 int get_square_matrix_size(const char *filename){
-    FILE *f = fopen(filename,"r");
-    if(!f){ perror("Failed to open file"); return -1; }
+    FILE *f = fopen(filename, "r");
+    if (!f) return -1; 
 
     double tmp;
     long long count = 0;
-    while(fscanf(f, "%lf%*[, ]", &tmp) == 1) count++;
+    while (fscanf(f, "%lf%*[, ]", &tmp) == 1) 
+        count++;
     fclose(f);
 
-    int n = (int)(sqrt((double)count));
-    if ((long long)n * n != count) return -1; // not square
+    int n = (int) sqrt((double) count);
 
-    return n;
+    return ((long long) n * n == count) ? n : -1;
 }
 
 int get_feature_matrix_size(const char *filename, int *cols){
     FILE *f = fopen(filename,"r");
-    if(!f){ perror("Failed to open file"); return -1; }
+    if (!f) return -1;
 
-    int n=0;
-    char line[8192];
+    int n = 0;
     int c = -1;
+    char line[8192];
 
-    while(fgets(line, sizeof(line), f)){
-        if(strlen(line) <= 1) continue;
+    while (fgets(line, sizeof(line), f)){
+        if (strlen(line) <= 1) continue;
         n++;
-        if(c == -1){
+        if (c == -1){
             c = 0;
             char *p = line;
             double tmp;
-            while(sscanf(p,"%lf%*[, ]",&tmp)==1){
+            while (sscanf(p, "%lf%*[, ]", &tmp) == 1){
                 c++;
                 while(*p && *p != ',' && *p != ' ' && *p != '\n') p++;
-                while(*p == ',' || *p==' ') p++;
+                while(*p == ',' || *p == ' ') p++;
             }
         }
     }

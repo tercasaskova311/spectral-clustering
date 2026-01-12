@@ -4,19 +4,19 @@
 #include <math.h>
 
 void kmeans(double *U, int n, int k, int clusters, int iters, int rank, int size, int *labels){
+    /* Allocate and initialize centroids on rank 0 */
     double *centroids = malloc(clusters * k * sizeof(double));
-
     if (rank == 0){
-        for (int c = 0; c < clusters; c++){
-            for (int j = 0; j < k; j++){
+        for (int c = 0; c < clusters; c++)
+            for (int j = 0; j < k; j++)
                 centroids[c * k + j] = U[c * k + j];
-            }
-        }
     }
 
     MPI_Bcast(centroids, clusters * k, MPI_DOUBLE, 0, MPI_COMM_WORLD);
     
-    int rows = n / size, rem = n % size;
+    /* Determine row ownership */
+    int rows = n / size;
+    int rem = n % size;
     int start = (rank < rem) ? rank * (rows + 1) : rank * rows + rem;
     int end = start + ((rank < rem) ? rows + 1 : rows);
 
@@ -24,7 +24,7 @@ void kmeans(double *U, int n, int k, int clusters, int iters, int rank, int size
         double *local_sum = calloc(clusters * k, sizeof(double));
         int *local_count = calloc(clusters, sizeof(int));
 
-        // assignment step
+        /* Assignment step */
         for (int i = start; i < end; i++) {
             int best = 0;
             double best_dist = 1e100;
@@ -43,28 +43,26 @@ void kmeans(double *U, int n, int k, int clusters, int iters, int rank, int size
 
             labels[i] = best;
             local_count[best]++;
-            for (int j = 0; j < k; j++) {
+            for (int j = 0; j < k; j++) 
                 local_sum[best * k + j] += U[i * k + j];
-            }
         }
 
-        // global reduction
-        MPI_Allreduce(MPI_IN_PLACE, local_sum,
-                    clusters * k, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
-
+        /* Global reduction of centroid updates */
+        MPI_Allreduce(MPI_IN_PLACE, local_sum, 
+                      clusters * k, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
         MPI_Allreduce(MPI_IN_PLACE, local_count,
-                    clusters, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+                      clusters, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
 
-        // update centroids
+        /* Update centroids */
         for (int c = 0; c < clusters; c++) {
-            if (local_count[c] > 0) {
-                for (int j = 0; j < k; j++) {
+            if (local_count[c] > 0) 
+                for (int j = 0; j < k; j++) 
                     centroids[c * k + j] = local_sum[c * k + j] / local_count[c];
-                }
-            }
         }
 
-        free(local_sum); free(local_count);
+        free(local_sum); 
+        free(local_count);
     }
+    
     free(centroids);
 }
