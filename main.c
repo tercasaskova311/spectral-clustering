@@ -29,11 +29,13 @@ int main(int argc, char **argv) {
     int clusters = 3;
     int cols = -1;
     int is_feature = 0;
+    double sigma = -1.0;  // Negative means auto-compute
 
-    // Optional overrides = ./spectral_mpi [file] [k] [clusters]
+    // Optional overrides = ./spectral_mpi [file] [k] [clusters] [sigma]
     if (argc >= 2) input_file = argv[1];
     if (argc >= 3) k = atoi(argv[2]);
     if (argc >= 4) clusters = atoi(argv[3]);
+    if (argc >= 5) sigma = atof(argv[4]);  // Optional sigma parameter
 
     if (rank == 0) {
         n = get_square_matrix_size(input_file);
@@ -56,7 +58,8 @@ int main(int argc, char **argv) {
     MPI_Bcast(&cols, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(&is_feature, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(&k, 1, MPI_INT, 0, MPI_COMM_WORLD);           
-    MPI_Bcast(&clusters, 1, MPI_INT, 0, MPI_COMM_WORLD);    
+    MPI_Bcast(&clusters, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&sigma, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
     if (rank == 0) mkdir("output", 0755);
     MPI_Barrier(MPI_COMM_WORLD); 
@@ -67,8 +70,6 @@ int main(int argc, char **argv) {
     double *L = malloc(n * n * sizeof(double));
     double *U = malloc(n * k * sizeof(double));
     int *labels = malloc(n * sizeof(int));
-    double sigma = 1.0;
-
 
     if (!S || !degree || !L || !U || !labels) {
         fprintf(stderr, "Rank %d: Memory allocation failed\n", rank);
@@ -84,7 +85,7 @@ int main(int argc, char **argv) {
 
     //load matirces
     t_start = MPI_Wtime();
-    //Load / compute similarity - some matrices in your data are not squared...
+    //Load / compute similarity - some matrices in the data are squared...
     if (is_feature) {
         if (rank == 0) {
             double *X = malloc(n * cols * sizeof(double));
@@ -136,7 +137,13 @@ int main(int argc, char **argv) {
     if(rank == 0){
         printf("\n=== Spectral Clustering Results ===\n");
         printf("Dataset: %s\n", input_file);
-        printf("Matrix size: %d x %d\n", n, n);
+        if (is_feature) {
+            printf("Input: %d x %d feature matrix\n", n, cols);
+            printf("Computed similarity matrix: %d x %d\n", n, n);
+            printf("Sigma (RBF bandwidth): %.4f\n", sigma);
+        } else {
+            printf("Matrix size: %d x %d\n", n, n);
+        }
         printf("Eigenvectors (k): %d\n", k);
         printf("Clusters: %d\n", clusters);
         printf("MPI processes: %d\n", size);
@@ -161,9 +168,9 @@ int main(int argc, char **argv) {
         FILE *pf = fopen("output/performance.csv", "a");
         if (pf) {
             fprintf(pf,
-                "%s,%d,%d,%d,%d,%d,"
+                "%s,%d,%d,%d,%d,%d,%.4f,"
                 "%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,",
-                input_file, n, cols, k, clusters, size,
+                input_file, n, cols, k, clusters, size, sigma,
                 t_load, t_degree, t_laplacian,
                 t_eigen, t_kmeans, t_total
             );
