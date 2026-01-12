@@ -158,8 +158,20 @@ int main(int argc, char **argv) {
         printf("===================================\n\n");
 
         // Append to CSV
+        int write_header = 0;
+        struct stat st;
+        if (stat("output/performance.csv", &st) != 0) {
+            write_header = 1;
+        }
+        
         FILE *pf = fopen("output/performance.csv", "a");
         if (pf) {
+            if (write_header) {
+                fprintf(pf,
+                    "dataset,n,cols,k,clusters,mpi_procs,"
+                    "t_load,t_degree,t_laplacian,t_eigen,t_kmeans,t_total,quality\n"
+                );
+            }
             fprintf(pf,
                 "%s,%d,%d,%d,%d,%d,"
                 "%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,",
