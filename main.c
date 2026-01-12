@@ -155,12 +155,12 @@ int main(int argc, char **argv) {
         printf("K-means:        %.6f s\n", t_kmeans);
         printf("Total time:     %.6f s\n", t_total);
 
-        #if ENABLE_METRICS
+    #if ENABLE_METRICS
         double score = cluster_similarity_score(S, labels, n);
 
         printf("\n--- Quality ---\n");
         printf("Cluster quality (intra/inter ratio): %.4f\n", score);
-        #endif
+    #endif
 
         printf("===================================\n\n");
 
@@ -170,7 +170,7 @@ int main(int argc, char **argv) {
         if (stat("output/performance.csv", &st) != 0) {
             write_header = 1;
         }
-        
+
         FILE *pf = fopen("output/performance.csv", "a");
         if (pf) {
             if (write_header) {
