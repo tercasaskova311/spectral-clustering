@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
     // Defaults
-    const char *input_file = "data/ans_batch/test2_wam.txt";
+    const char *input_file = "data/test2_wam.txt";
     int n = -1;          
     int k = 3;
     int clusters = 3;
