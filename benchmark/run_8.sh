@@ -9,4 +9,4 @@
 cd $PBS_O_WORKDIR
 module load mpich-3.2
 
-mpirun.actual -np 8 ./spectral_mpi data/ans_batch/test2_ddg.txt 3 3
+mpirun.actual -np 8 ./spectral_mpi data/test_batch/test5.txt 3 3
