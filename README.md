@@ -41,8 +41,9 @@ make
 
 # Build the code with metrics disabled (for benchmarking)
 
-make clean\
-make CFLAGS="-std=c99 -Wall -Wextra -DENABLE_METRICS=0"
+make clean
+
+make CFLAGS="-std=c99 -Wall -Wextra -O3 -DENABLE_METRICS=0"
 
 
 ## Run locally 
