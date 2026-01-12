@@ -4,7 +4,7 @@
 #PBS -l walltime=00:10:00
 #PBS -q short_cpuQ
 #PBS -j oe
-#PBS -o out_1.txt
+#PBS -o benchmark/out_1.txt
 
 cd $PBS_O_WORKDIR
 module load mpich-3.2
