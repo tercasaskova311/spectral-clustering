@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -N spectral_32
-#PBS -l select=2:ncpus=8:mem=8gb
+#PBS -l select=4:ncpus=8:mem=8gb
 #PBS -l walltime=00:10:00
 #PBS -q short_cpuQ
 #PBS -j oe
