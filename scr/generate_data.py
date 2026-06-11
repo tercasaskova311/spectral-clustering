@@ -19,7 +19,7 @@ import argparse
 import numpy as np
 
 # ── Project Specific Sizes ────────────────────────────────────────────────────
-TARGET_SIZES = [500, 1000, 2000, 4000, 8000, 16000]
+TARGET_SIZES = [500, 1000, 2000, 4000]
 SEED         = 42
 
 def generate_and_save_matrix(n, path, rng):
