@@ -72,6 +72,9 @@ An optional quality metric is implemented:
 
 ```bash 
 module load mpich-3.2
+
+# Or for new system
+module load OpenMPI/4.1.6-GCC-13.2.0
 ```
 
 ### Build 

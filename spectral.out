@@ -1,22 +1,60 @@
-Loading matrices from data/ans_batch/test2_wam.txt
-Loaded similarity matrix of size 43 x 43
+Loading OpenMPI/4.1.6-GCC-13.2.0
+  Loading requirement: GCCcore/13.2.0 zlib/1.2.13-GCCcore-13.2.0
+    binutils/2.40-GCCcore-13.2.0 GCC/13.2.0 numactl/2.0.16-GCCcore-13.2.0
+    XZ/5.4.4-GCCcore-13.2.0 libxml2/2.11.5-GCCcore-13.2.0
+    libpciaccess/0.17-GCCcore-13.2.0 hwloc/2.9.2-GCCcore-13.2.0 OpenSSL/1.1
+    libevent/2.1.12-GCCcore-13.2.0 UCX/1.15.0-GCCcore-13.2.0
+    libfabric/1.19.0-GCCcore-13.2.0 PMIx/4.2.6-GCCcore-13.2.0
+    UCC/1.2.0-GCCcore-13.2.0
+[1781181852.866448] [hpc3-c11-n23:3978685:0]        ib_iface.c:1011 UCX  ERROR iface=0x96f170: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978685] pml_ucx.c:309  Error: Failed to create UCP worker
+[1781181852.868186] [hpc3-c11-n23:3978677:0]        ib_iface.c:1011 UCX  ERROR iface=0x22dc100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[1781181852.868271] [hpc3-c11-n23:3978686:0]        ib_iface.c:1011 UCX  ERROR iface=0x23e2100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[1781181852.868339] [hpc3-c11-n23:3978681:0]        ib_iface.c:1011 UCX  ERROR iface=0x1d16100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[1781181852.868693] [hpc3-c11-n23:3978679:0]        ib_iface.c:1011 UCX  ERROR iface=0xfd8170: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[1781181852.868736] [hpc3-c11-n23:3978676:0]        ib_iface.c:1011 UCX  ERROR iface=0x22be1c0: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[1781181852.868826] [hpc3-c11-n23:3978689:0]        ib_iface.c:1011 UCX  ERROR iface=0x1160100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978677] pml_ucx.c:309  Error: Failed to create UCP worker
+[hpc3-c11-n23.unitn.it:3978686] pml_ucx.c:309  Error: Failed to create UCP worker
+[hpc3-c11-n23.unitn.it:3978681] pml_ucx.c:309  Error: Failed to create UCP worker
+[hpc3-c11-n23.unitn.it:3978676] pml_ucx.c:309  Error: Failed to create UCP worker
+[hpc3-c11-n23.unitn.it:3978679] pml_ucx.c:309  Error: Failed to create UCP worker
+[hpc3-c11-n23.unitn.it:3978689] pml_ucx.c:309  Error: Failed to create UCP worker
+[1781181852.869919] [hpc3-c11-n23:3978688:0]        ib_iface.c:1011 UCX  ERROR iface=0x204c120: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978688] pml_ucx.c:309  Error: Failed to create UCP worker
+[1781181852.871699] [hpc3-c11-n23:3978683:0]        ib_iface.c:1011 UCX  ERROR iface=0x19f3100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978683] pml_ucx.c:309  Error: Failed to create UCP worker
+[1781181852.881729] [hpc3-c11-n23:3978690:0]        ib_iface.c:1011 UCX  ERROR iface=0x91e100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[1781181852.882637] [hpc3-c11-n23:3978684:0]        ib_iface.c:1011 UCX  ERROR iface=0x17ba100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978690] pml_ucx.c:309  Error: Failed to create UCP worker
+[hpc3-c11-n23.unitn.it:3978684] pml_ucx.c:309  Error: Failed to create UCP worker
+[1781181852.883925] [hpc3-c11-n23:3978687:0]        ib_iface.c:1011 UCX  ERROR iface=0x98b100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[1781181852.884640] [hpc3-c11-n23:3978678:0]        ib_iface.c:1011 UCX  ERROR iface=0x16f3170: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978687] pml_ucx.c:309  Error: Failed to create UCP worker
+[hpc3-c11-n23.unitn.it:3978678] pml_ucx.c:309  Error: Failed to create UCP worker
+[1781181852.891601] [hpc3-c11-n23:3978691:0]        ib_iface.c:1011 UCX  ERROR iface=0x260b120: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978691] pml_ucx.c:309  Error: Failed to create UCP worker
+[1781181852.892851] [hpc3-c11-n23:3978680:0]        ib_iface.c:1011 UCX  ERROR iface=0x17b2100: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978680] pml_ucx.c:309  Error: Failed to create UCP worker
+[1781181852.945092] [hpc3-c11-n23:3978682:0]        ib_iface.c:1011 UCX  ERROR iface=0x87a140: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Operation not supported failed: Operation not supported
+[hpc3-c11-n23.unitn.it:3978682] pml_ucx.c:309  Error: Failed to create UCP worker
 
 === Spectral Clustering Results ===
-Dataset: data/ans_batch/test2_wam.txt
+Dataset: data/test2_wam.txt
 Matrix size: 43 x 43
 Eigenvectors (k): 3
 Clusters: 3
 MPI processes: 16
 
 --- Timing ---
-Load matrix:    0.000734 s
-Degree matrix:  0.000074 s
-Laplacian:      0.000366 s
-Eigenvectors:   0.001997 s
-K-means:        0.004201 s
-Total time:     0.007589 s
+Load matrix:    0.001246 s
+Degree matrix:  0.000037 s
+Laplacian:      0.000070 s
+Eigenvectors:   0.000615 s
+K-means:        0.002042 s
+Total time:     0.004173 s
 
 --- Quality ---
-Cluster quality (intra/inter ratio): 1.6405
+Cluster quality (intra/inter ratio): 9.2911
 ===================================
 

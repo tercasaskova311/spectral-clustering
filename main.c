@@ -165,9 +165,9 @@ int main(int argc, char **argv) {
 
         /* Append performance data to CSV */
         struct stat st;
-        int write_header = (stat("output/performance_2.csv", &st) != 0);
+        int write_header = (stat("output/performance_new.csv", &st) != 0);
 
-        FILE *pf = fopen("output/performance_2.csv", "a");
+        FILE *pf = fopen("output/performance_new.csv", "a");
         if (pf) {
             if (write_header) {
                 fprintf(pf,
