@@ -19,14 +19,12 @@ import argparse
 import numpy as np
 
 # ── Project Specific Sizes ────────────────────────────────────────────────────
-TARGET_SIZES = [500, 1000, 2000, 4000]
+TARGET_SIZES = [500, 1000, 2000, 4000, 8000, 16000]
 SEED         = 42
 
 def generate_and_save_matrix(n, path, rng):
-    """Generates an n x n matrix of random floats and writes it line-by-line."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
     
-    # We generate and write row-by-row to keep memory usage minimal during generation
     with open(path, "w") as f:
         for _ in range(n):
             # Simulates realistic numbers (uniform values between 0.0 and 1.0)
