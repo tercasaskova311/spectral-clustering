@@ -9,7 +9,7 @@
 cd $PBS_O_WORKDIR
 module load OpenMPI/4.1.6-GCC-13.2.0
 
-INPUT_DIR=data
+INPUT_DIR=data/input
 
 for file in ${INPUT_DIR}/*.txt; do
     mpirun ./spectral_mpi "$file" 3 3
