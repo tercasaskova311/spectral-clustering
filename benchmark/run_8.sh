@@ -7,7 +7,7 @@
 #PBS -o benchmark/out_8.txt
 
 cd $PBS_O_WORKDIR
-module load OpenMPI/4.1.6-GCC-13.2.0
+module load OpenMPI/4.1.5-GCC-12.3.0
 
 INPUT_DIR=data/input
 

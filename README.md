@@ -74,7 +74,8 @@ An optional quality metric is implemented:
 module load mpich-3.2
 
 # Or for new system
-module load OpenMPI/4.1.6-GCC-13.2.0
+module load OpenMPI/4.1.5-GCC-12.3.0 
+module load ScaLAPACK/2.2.0-gompi-2023a-fb 
 ```
 
 ### Build 

@@ -2,7 +2,7 @@ CC = mpicc
 CFLAGS = -std=c99 -Wall -Wextra -O3
 # For benchmarking, disable metrics with:
 # make CFLAGS="-std=c99 -Wall -Wextra -O3 -DENABLE_METRICS=0"
-LDFLAGS = -llapack -lblas -lm
+LDFLAGS = -llapack -lblas -lm -lscalapack -lgfortran
 
 SRC = main.c laplacian.c eigensolver.c kmeans.c metrics.c compute_similarity.c read_matrix_size.c
 OBJ = $(SRC:.c=.o)
