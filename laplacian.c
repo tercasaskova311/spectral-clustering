@@ -4,7 +4,15 @@
 #include <string.h>
 
 void load_square_matrix(const char *filename, double *S, int n, int rank){
-    /* Only rank 0 performs file I/O */
+
+    /*READING MATRIX: Only rank 0 reads the file 
+    * STRATEGY: S (write) - dependency WAW, RAW, WAR
+    *.          FILE* f (write) - dependency WAW, RAW, WAR
+    *           S[i*n+j] (write) - dependency WAW
+    * OpenMP = not parallelisable since S and FILE* f are shared writable state with
+    * dependencies. Only rank 0 reads the file and populates S, then all ranks synchronise at the MPI_Bcast before any rank can read S for subsequent computation.
+
+    */
     if (rank == 0){
         FILE *f = fopen(filename, "r");
         if (!f) {
@@ -23,8 +31,6 @@ void load_square_matrix(const char *filename, double *S, int n, int rank){
         }
         fclose(f);    
     }
-
-    /* Broadcast the full matrix to all ranks */
     MPI_Bcast(S, n*n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 }
 
@@ -38,8 +44,13 @@ void compute_degree_matrix (double *S, double *degree, int n, int rank, int size
     /* Initialize local degree entries */
     memset(degree, 0, n * sizeof(double));
 
-    /* Compute degree values for owned rows */
-    for (int i = start; i < end; i++){
+    /* Compute degree values for owned rows 
+     * STRATEGY: degree[i] (write) - no dependency between different i, but WAW and RAW dependencies on degree[i] within the same i.
+     *           S (read) - no dependency
+     * OpenMP = parallelizable over local rows. Each thread accumulates into its own degree[i] 
+     */
+
+     for (int i = start; i < end; i++){
         for (int j = 0; j < n ; j++) {
             degree[i] += S[i * n + j];
         }
@@ -58,7 +69,14 @@ void laplacian (double *S, double *degree, double *L, int n, int rank, int size)
     /* Initialize Laplacian */
     memset(L, 0, n*n * sizeof(double));
 
+
     /* Compute local rows of the Laplacian */
+    /* STRATEGY: L[i * n + j] (write) - no dependency between different (i,j), but WAW and RAW dependencies on L[i * n + j] within the same (i,j).
+     *           degree (read) - no dependency
+     *           S (read) - no dependency
+     * OpenMP = parallelizable over local rows. Each thread computes its own portion of the Laplacian.
+     */
+    
     for(int i = start; i < end; i++){
         for(int j = 0; j< n; j++){
             if (i == j) 
