@@ -2,7 +2,7 @@
 #PBS -N spectral_1
 #PBS -l select=1:ncpus=1:mpiprocs=1:mem=8gb
 #PBS -l walltime=00:10:00
-#PBS -q short_cpuQ
+#PBS -q shortCPUQ
 #PBS -j oe
 #PBS -o benchmark/out_1.txt
 
@@ -12,5 +12,5 @@ module load OpenMPI/4.1.6-GCC-13.2.0
 INPUT_DIR=data/input
 
 for file in ${INPUT_DIR}/*.txt; do
-    mpirun ./spectral_mpi "$file" 3 3
+    mpirun --hostfile $PBS_NODEFILE ./spectral_mpi "$file" 3 3
 done
