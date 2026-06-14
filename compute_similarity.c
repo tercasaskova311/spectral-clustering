@@ -14,11 +14,7 @@ double compute_sigma_median_heuristic(double *X, int n, int m) {
     int count = 0;
     /*
      *SAMPLING LOOP: The loops carry a shared 'count', index used to write into 'distances'. 
-     *STRATEGY: count (read/write)  - dependency RAW, WAW, WAR
-     *          distances[] (write) - dependency WAW
-     *          X (read)          - no dependency
-     *Open MP = iterations are not independent due to shared 'count' and 'distances' state.
-     *therefore no openmp parallelisation possible in this loop.
+     *Open MP = not parallelisable due to shared counter distance [count]
      */
     
     for (int i = 0; i < n && count < max_samples; i++) {
@@ -29,12 +25,10 @@ double compute_sigma_median_heuristic(double *X, int n, int m) {
              * DISTANCE LOOP: Pure reduction — each iteration reads independent
              * elements X[i*m+k] and X[j*m+k] (no cross-iteration dependency)
              * and accumulates into dist2.
-             * STRATEGY: dist2 - RAW 
-             *           X - read only
-             *           diff - private  
-             * Open MP = parallelizable, no WAR or WAW,
-             * since iterations are independent and dist2 is private to each (i,j) pair.
-             */ 
+             * Open MP = Contains a reduction dependency on dist2; 
+             * parallelizable using OpenMP reduction.
+            */
+
             double dist2 = 0.0;
             for (int k = 0; k < m; k++) {
                 double diff = X[i*m + k] - X[j*m + k];
@@ -46,8 +40,8 @@ double compute_sigma_median_heuristic(double *X, int n, int m) {
 
     /*
      * BUBBLE SORT: loop iteration j+1 depends on val. modified by j
-     * STRATEGY: distances[] - dependency WAW, RAW, WAR
-     * OpenMP = not parallelisable due to loop-carried dependencies on distances[] during sorting.
+     * OpenMP = not parallelisable due to loop-carried dependencies 
+     * on distances[] during sorting.
      */
 
      for (int i = 0; i < count - 1; i++) {
@@ -75,10 +69,8 @@ void compute_similarity_matrix(double *X, double *S, int n, int m, double *sigma
     
     double two_sigma_sq = 2.0 * (*sigma) * (*sigma);
     
-    /* OUTER LOOP: this is the outer loop for computing the similarity matrix 
-     * STRATEGY: S[i*n+j] (write) - dependency WAW
-     *           X (read)       - no dependency
-     *           sigma (read)    - no dependency
+    /* OUTER LOOP: tIterations are independent; each iteration writes a unique matrix element. 
+     * No loop-carried dependencies.
      * OpenMP = perfect candidate for parallelisation since each S[i*n+j] is independent 
      * and X and sigma are read-only.
      */
@@ -87,7 +79,8 @@ void compute_similarity_matrix(double *X, double *S, int n, int m, double *sigma
 
             /*INNER LOOP: this is the inner loop for computing the similarity matrix 
             *STRATEGY: S[i *n+j] (write) - dependency WAW
-            *Open MP = also parallelisable since each S[i*n+j] is independent and there are no dependencies on X or sigma. However, since this is a simple assignment for the diagonal, we can skip the inner loop entirely for i==j and directly set S[i*n+i] = 1.0 without parallelisation.
+            *Open MP =  parallelisable since each S[i*n+j] is independent
+            * and there are no dependencies on X or sigma. 
             */
             if (i == j) {
                 S[i * n + j] = 1.0;
@@ -95,7 +88,7 @@ void compute_similarity_matrix(double *X, double *S, int n, int m, double *sigma
             }
 
             /*DISTANCE LOOP: this is the loop for computing the squared Euclidean distance between points i and j 
-             * STRATEGY: dist2 (write) - dependency RAW reduction
+             * STRATEGY: dist2 (write) - Reduction dependency on accumulator dist2; OpenMP reduction possible.
              * OpenMP = parallelisable since each dist2 is private to each (i,j) pair and iterations of the k-loop are independent. But probably not worth parallelising this inner loop due to the overhead of parallelisation and the fact that m is typically small compared to n. 
              */
             double dist2 = 0.0;

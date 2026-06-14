@@ -6,9 +6,9 @@
 void load_square_matrix(const char *filename, double *S, int n, int rank){
 
     /*READING MATRIX: Only rank 0 reads the file 
-    * STRATEGY: S (write) - dependency WAW, RAW, WAR
-    *.          FILE* f (write) - dependency WAW, RAW, WAR
-    *           S[i*n+j] (write) - dependency WAW
+    * File reading is inherently sequential because of fscanf() 
+    * calls depend on the current file position. Although each matrix element 
+    * is written only once, parallelizing the loop would require coordinated access to the file stream.
     * OpenMP = not parallelisable since S and FILE* f are shared writable state with
     * dependencies. Only rank 0 reads the file and populates S, then all ranks synchronise at the MPI_Bcast before any rank can read S for subsequent computation.
 
@@ -45,9 +45,12 @@ void compute_degree_matrix (double *S, double *degree, int n, int rank, int size
     memset(degree, 0, n * sizeof(double));
 
     /* Compute degree values for owned rows 
-     * STRATEGY: degree[i] (write) - no dependency between different i, but WAW and RAW dependencies on degree[i] within the same i.
-     *           S (read) - no dependency
-     * OpenMP = parallelizable over local rows. Each thread accumulates into its own degree[i] 
+     * STRATEGY: degree[i] (write) - reduction dependency on degree[i] 
+     * since multiple threads may accumulate into the same degree[i] if 
+     * they share the same row i. S (read) - no dependency
+     * OpenMP = The outer loop is embarrassingly parallel. Each iteration 
+     * computes an independent row sum and writes to a unique degree[i]. 
+     * The inner loop contains a reduction-like accumulation into degree[i]. 
      */
 
      for (int i = start; i < end; i++){
@@ -71,9 +74,8 @@ void laplacian (double *S, double *degree, double *L, int n, int rank, int size)
 
 
     /* Compute local rows of the Laplacian */
-    /* STRATEGY: L[i * n + j] (write) - no dependency between different (i,j), but WAW and RAW dependencies on L[i * n + j] within the same (i,j).
-     *           degree (read) - no dependency
-     *           S (read) - no dependency
+    /* STRATEGY: Each iteration computes one Laplacian element and 
+     * writes to a unique location L[i*n+j]. No loop-carried dependencies exist.
      * OpenMP = parallelizable over local rows. Each thread computes its own portion of the Laplacian.
      */
     
