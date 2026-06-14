@@ -50,6 +50,11 @@ static int global_index_from_local(int local_idx, int proc_coord,
 static void choose_process_grid(int size, int *nprow, int *npcol) {
     int p;
     *nprow = 1;
+
+    /* GRID SEARCH: p is updated sequentially while scanning divisors of size.
+     * OpenMP = not useful here because the loop is tiny and carries the
+     * current best grid choice through *nprow.
+     */
     for (p = 1; p * p <= size; p++) {
         if (size % p == 0) {
             *nprow = p;
@@ -142,11 +147,21 @@ void compute_eigenvectors(double *L, double *U, int n, int k, int rank) {
             MPI_Abort(MPI_COMM_WORLD, 1);
         }
 
+        /* INITIALIZATION LOOP: Each iteration writes one independent entry.
+         * OpenMP = parallelizable, but the array is only nprow*npcol entries
+         * so parallel overhead would usually dominate.
+         */
         for (int p = 0; p < nprow * npcol; p++) {
             coord_to_rank[p] = -1;
         }
 
         int total = 0;
+
+        /* METADATA LOOP: sendcounts[p] and coord_to_rank[...] are independent
+         * writes, but displs[p] depends on the prefix sum stored in total.
+         * OpenMP = not directly parallelizable without a parallel prefix-sum
+         * phase; this setup cost is small compared with the eigensolve.
+         */
         for (int p = 0; p < size; p++) {
             int prow = allinfo[5 * p + 0];
             int pcol = allinfo[5 * p + 1];
@@ -169,6 +184,15 @@ void compute_eigenvectors(double *L, double *U, int n, int k, int rank) {
         }
 
         /* Pack dense row-major C matrix L into ScaLAPACK local column-major blocks. */
+        /* PACKING LOOP: Each (gi, gj) element of L maps to exactly one
+         * block-cyclic destination in sendbuf. There are no algorithmic
+         * dependencies between matrix elements, but parallel writes would
+         * target different regions of one shared sendbuf.
+         * OpenMP = parallelizable over gi/gj if the destination mapping is
+         * guaranteed unique, as it is here. The write indices are indirect,
+         * so this should be tested carefully for cache behavior and false
+         * sharing before using it for performance.
+         */
         for (int gj = 0; gj < n; gj++) {
             int pcol = owner_index(gj, nb, npcol);
             int lj = local_index(gj, nb, npcol);
@@ -246,6 +270,12 @@ void compute_eigenvectors(double *L, double *U, int n, int k, int rank) {
 
     /* Gather only the first k eigenvectors into row-major U on rank 0. */
     int local_pairs = 0;
+
+    /* COUNT LOOP: local_pairs is a reduction-style counter over local
+     * ScaLAPACK rows and columns. Z_loc is read-only here.
+     * OpenMP = parallelizable with a reduction on local_pairs, but this loop
+     * only covers the local part of the first k eigenvectors.
+     */
     for (int lj = 0; lj < local_cols; lj++) {
         int gj = global_index_from_local(lj, mycol, nb, npcol);
         if (gj >= k || gj >= n) continue;
@@ -264,6 +294,15 @@ void compute_eigenvectors(double *L, double *U, int n, int k, int rank) {
     }
 
     int pos = 0;
+
+    /* LOCAL PACK LOOP: Each selected local eigenvector entry is packed as
+     * (global row, global column, value). The variable pos is a loop-carried
+     * write index, so iterations depend on the previous number of accepted
+     * entries.
+     * OpenMP = not directly parallelizable with the current append pattern.
+     * A parallel version would need precomputed offsets or thread-private
+     * buffers followed by a merge.
+     */
     for (int lj = 0; lj < local_cols; lj++) {
         int gj = global_index_from_local(lj, mycol, nb, npcol);
         if (gj >= k || gj >= n) continue;
@@ -297,6 +336,11 @@ void compute_eigenvectors(double *L, double *U, int n, int k, int rank) {
 
     if (rank == 0) {
         int total_doubles = 0;
+
+        /* DISPLACEMENT LOOP: rdispls[p] is a prefix sum over recvcounts.
+         * OpenMP = not directly parallelizable because total_doubles carries
+         * the cumulative offset from one iteration to the next.
+         */
         for (int p = 0; p < size; p++) {
             rdispls[p] = total_doubles;
             total_doubles += recvcounts[p];
@@ -314,6 +358,13 @@ void compute_eigenvectors(double *L, double *U, int n, int k, int rank) {
                 0, MPI_COMM_WORLD);
 
     if (rank == 0) {
+        /* UNPACK LOOP: Each packed triple writes one U[gi, gj] entry. The
+         * ScaLAPACK ownership mapping should make entries unique across
+         * ranks, so there is no intended write conflict.
+         * OpenMP = parallelizable over the received triples if uniqueness is
+         * preserved. The nested p/q structure and indirect indexing mean it
+         * may not be a major performance target compared with PDSYEVD.
+         */
         for (int p = 0; p < size; p++) {
             for (int q = rdispls[p]; q < rdispls[p] + recvcounts[p]; q += 3) {
                 int gi = (int)recvbuf[q];

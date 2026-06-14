@@ -1,9 +1,10 @@
 # Parallel Spectral Clustering with MPI
 
-This project implements **spectral clustering** using **MPI parallelization** on a distributed-memory HPC system. 
+This project implements **spectral clustering** using **MPI parallelization** on a distributed-memory HPC system.
 The goal is to study the performance and scalability of spectral clustering while preserving clustering quality.
 
 The implementation supports both:
+
 - **Precomputed similarity matrices** (square input)
 - **Feature matrices**, for which a similarity matrix is computed using an RBF kernel
 
@@ -29,29 +30,30 @@ The implemented spectral clustering pipeline follows these steps:
   - Degree computation
   - Laplacian construction
   - k-means clustering
-- **Eigen-decomposition** is performed **serially on rank 0** using LAPACK (`dsyev`) and broadcast to all ranks.
-  - This design choice was imposed by the available HPC environment, which did not provide distributed eigensolvers.
-- Communication is handled using `MPI_Bcast` and `MPI_Allreduce`.
-- Large matrices are freed as early as possible to limit memory usage.
+- **Eigen-decomposition** is performed with **ScaLAPACK/BLACS** using `pdsyevd`.
+  - Rank 0 packs the dense Laplacian into ScaLAPACK's block-cyclic layout.
+  - The first *k* eigenvectors are gathered back into a row-major spectral embedding and broadcast to all ranks.
+- Communication is handled using `MPI_Bcast`, `MPI_Gather`, `MPI_Scatterv`, `MPI_Gatherv`, and `MPI_Allreduce`.
+- Large matrices are freed as early as possible to limit memory usage, but the full similarity matrix is still stored on each rank.
 
 ---
 
 ## Project Structure
 
-```
+```text
 spectral-clustering/
-├── main.c                  # Main driver and pipeline
-├── laplacian.c / .h        # Matrix loading, degree, Laplacian
-├── eigensolver.c / .h      # LAPACK eigen-decomposition
-├── kmeans.c / .h           # Distributed k-means
-├── compute_similarity / .h # RBF similarity + sigma heuristic
-├── read_matrix_size.c / .h # Input format detection
-├── metrics.c / .h          # Clustering quality metric
-├── Makefile
-├── run_spectral.sh         # General PBS job submission script
-├── data/                   # Input datasets
-├── output/                 # CSV benchmarking results
-├── benchmark/              # PBS job submission scripts for benchmarks
+|-- main.c                    # Main driver and pipeline
+|-- laplacian.c / .h          # Matrix loading, degree, Laplacian
+|-- eigensolver.c / .h        # ScaLAPACK eigen-decomposition
+|-- kmeans.c / .h             # Distributed k-means
+|-- compute_similarity.c / .h # RBF similarity + sigma heuristic
+|-- read_matrix_size.c / .h   # Input format detection
+|-- metrics.c / .h            # Clustering quality metric
+|-- Makefile
+|-- run_spectral.sh           # General PBS job submission script
+|-- data/                     # Input datasets
+|-- output/                   # CSV benchmarking results
+`-- benchmark/                # PBS job submission scripts for benchmarks
 ```
 
 ---
@@ -70,15 +72,12 @@ An optional quality metric is implemented:
 
 ### Load required modules (example)
 
-```bash 
-module load mpich-3.2
-
-# Or for new system
-module load OpenMPI/4.1.5-GCC-12.3.0 
-module load ScaLAPACK/2.2.0-gompi-2023a-fb 
+```bash
+module load OpenMPI/4.1.5-GCC-12.3.0
+module load ScaLAPACK/2.2.0-gompi-2023a-fb
 ```
 
-### Build 
+### Build
 
 ```bash
 make clean
@@ -94,40 +93,44 @@ make CFLAGS="-std=c99 -Wall -Wextra -O3 -DENABLE_METRICS=0"
 
 ---
 
-## Running locally 
+## Running Locally
 
 ```bash
 # Single process (debug)
-mpirun.actual -np 1 ./spectral_mpi data/ans_batch/test2_ddg.txt
+mpirun -np 1 ./spectral_mpi data/input/matrix_n500.txt
 
 # Multiple processes
-mpirun.actual -np 4 ./spectral_mpi data/ans_batch/test2_ddg.txt 3 3
+mpirun -np 4 ./spectral_mpi data/input/matrix_n500.txt 3 3
 ```
 
-### Arguments:
+### Arguments
 
-```
-./spectral_mpi <input_file> <k_eigenvectors> <clusters> <sigma>
+```text
+./spectral_mpi [input_file] [k_eigenvectors] [clusters] [sigma]
 ```
 
-If `sigma` is omitted or negative, it is automatically selected using the median heuristic.
+If `sigma` is omitted or negative for feature-matrix input, it is automatically selected using the median heuristic.
+For square similarity-matrix input, the sigma value is recorded but not used.
 
 ---
 
 ## Running on the Cluster (PBS)
+
 Submit the job using:
 
 ```bash
 qsub run_spectral.sh
 ```
 
-- Standard output is written to the PBS output file 
-- Performance results are appended to `output/performance.csv`
+- Standard output is written to the PBS output file
+- Performance results are appended to `output/performance_1.csv`
 
 ---
 
 ## Benchmarking Output
-Benchmarking experiments were performed using PBS batch scripts, with one script per MPI configuration. For each MPI configuration, the program is run sequentially on all datasets contained in the `data/` directory.
+
+Benchmarking experiments were performed using PBS batch scripts, with one script per MPI configuration.
+For each MPI configuration, the program is run sequentially on all datasets contained in the `data/input/` directory.
 
 For each run, the following timings are recorded:
 
@@ -144,14 +147,13 @@ Each execution appends timing and quality information to a shared CSV file, enab
 
 ## Dependencies
 
-- MPICH
+- MPI implementation such as OpenMPI or MPICH
 - BLAS
 - LAPACK
+- ScaLAPACK
+- gfortran runtime
 
 ## References
+
 - von Luxburg, U. (2007). A Tutorial on Spectral Clustering. Statistics and Computing, 17(4), 395-416. Available at: https://www.cs.cmu.edu/~aarti/Class/10701/readings/Luxburg06_TR.pdf
-
 - Eizenman, N. Spectral Clustering using C and Python. GitHub repository. https://github.com/nir-eizenman/Spectral-Clustering-using-C-and-Python
-
-
-
