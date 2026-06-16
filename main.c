@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
     /* Default parameters */
-    const char *input_file = "data/test2_wam.txt";
+    const char *input_file = "data/input/matrix_n2000.txt";
     int n = -1;          
     int k = 3;
     int clusters = 3;
