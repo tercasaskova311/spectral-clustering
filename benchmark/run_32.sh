@@ -8,9 +8,10 @@
 
 cd $PBS_O_WORKDIR
 module load OpenMPI/4.1.5-GCC-12.3.0
+module load ScaLAPACK/2.2.0-gompi-2023a-fb 
 
 INPUT_DIR=data/input
 
 for file in ${INPUT_DIR}/*.txt; do
-    mpirun --hostfile $PBS_NODEFILE ./spectral_mpi "$file" 3 3
+    mpirun --hostfile $PBS_NODEFILE -x LD_LIBRARY_PATH ./spectral_mpi "$file" 3 3
 done

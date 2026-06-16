@@ -1,0 +1,171 @@
+Loading OpenMPI/4.1.5-GCC-12.3.0
+  Loading requirement: GCCcore/12.3.0 zlib/1.2.13-GCCcore-12.3.0
+    binutils/2.40-GCCcore-12.3.0 GCC/12.3.0 numactl/2.0.16-GCCcore-12.3.0
+    XZ/5.4.2-GCCcore-12.3.0 libxml2/2.11.4-GCCcore-12.3.0
+    libpciaccess/0.17-GCCcore-12.3.0 hwloc/2.9.1-GCCcore-12.3.0 OpenSSL/1.1
+    libevent/2.1.12-GCCcore-12.3.0 UCX/1.14.1-GCCcore-12.3.0
+    libfabric/1.18.0-GCCcore-12.3.0 PMIx/4.2.4-GCCcore-12.3.0
+    UCC/1.2.0-GCCcore-12.3.0
+Loading ScaLAPACK/2.2.0-gompi-2023a-fb
+  Loading requirement: gompi/2023a OpenBLAS/0.3.23-GCC-12.3.0
+    FlexiBLAS/3.3.1-GCC-12.3.0
+
+=== Spectral Clustering Results ===
+Dataset: data/input/matrix_n1000.txt
+Matrix size: 1000 x 1000
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.232935 s
+Degree matrix:  0.000613 s
+Laplacian:      0.007681 s
+Eigenvectors:   1.017729 s
+K-means:        0.000390 s
+Total time:     1.259357 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0076
+===================================
+
+
+=== Spectral Clustering Results ===
+Dataset: data/input/matrix_n1500.txt
+Matrix size: 1500 x 1500
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.517289 s
+Degree matrix:  0.001433 s
+Laplacian:      0.017740 s
+Eigenvectors:   3.195874 s
+K-means:        0.000611 s
+Total time:     3.733067 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0026
+===================================
+
+
+=== Spectral Clustering Results ===
+Dataset: data/input/matrix_n1700.txt
+Matrix size: 1700 x 1700
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.663611 s
+Degree matrix:  0.001823 s
+Laplacian:      0.021921 s
+Eigenvectors:   4.535921 s
+K-means:        0.000639 s
+Total time:     5.224045 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0033
+===================================
+
+
+=== Spectral Clustering Results ===
+Dataset: data/input/matrix_n2000.txt
+Matrix size: 2000 x 2000
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.929732 s
+Degree matrix:  0.003242 s
+Laplacian:      0.030163 s
+Eigenvectors:   7.413678 s
+K-means:        0.000729 s
+Total time:     8.377925 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0013
+===================================
+
+
+=== Spectral Clustering Results ===
+Dataset: data/input/matrix_n4000.txt
+Matrix size: 4000 x 4000
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    3.669320 s
+Degree matrix:  0.011654 s
+Laplacian:      0.117257 s
+Eigenvectors:   61.268488 s
+K-means:        0.001398 s
+Total time:     65.068920 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0015
+===================================
+
+
+=== Spectral Clustering Results ===
+Dataset: data/input/matrix_n5000.txt
+Matrix size: 5000 x 5000
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    5.724700 s
+Degree matrix:  0.018312 s
+Laplacian:      0.183215 s
+Eigenvectors:   121.460770 s
+K-means:        0.001747 s
+Total time:     127.389653 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0025
+===================================
+
+
+=== Spectral Clustering Results ===
+Dataset: data/input/matrix_n500.txt
+Matrix size: 500 x 500
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.059912 s
+Degree matrix:  0.000171 s
+Laplacian:      0.002626 s
+Eigenvectors:   0.154324 s
+K-means:        0.000228 s
+Total time:     0.217478 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0041
+===================================
+
+
+=== Spectral Clustering Results ===
+Dataset: data/input/matrix_n700.txt
+Matrix size: 700 x 700
+Eigenvectors (k): 3
+Clusters: 3
+MPI processes: 2
+
+--- Timing ---
+Load matrix:    0.113470 s
+Degree matrix:  0.000316 s
+Laplacian:      0.005499 s
+Eigenvectors:   0.388395 s
+K-means:        0.000293 s
+Total time:     0.508273 s
+
+--- Quality ---
+Cluster quality (intra/inter ratio): 1.0103
+===================================
+
