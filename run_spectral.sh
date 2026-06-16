@@ -12,10 +12,10 @@
 #PBS -o spectral.out
 
 cd $PBS_O_WORKDIR
-module load OpenMPI/4.1.6-GCC-13.2.0
+module load OpenMPI/4.1.5-GCC-12.3.0
 module load ScaLAPACK/2.2.0-gompi-2023a-fb 
 
 mkdir -p output
 
-mpirun --hostfile $PBS_NODEFILE ./spectral_mpi data/input/matrix_n2000.txt 3 3
+mpirun --hostfile $PBS_NODEFILE -x LD_LIBRARY_PATH ./spectral_mpi data/input/matrix_n2000.txt 3 3
 
