@@ -45,6 +45,7 @@ spectral-clustering/
 |-- main.c                    # Main driver and pipeline
 |-- laplacian.c / .h          # Matrix loading, degree, Laplacian
 |-- eigensolver.c / .h        # ScaLAPACK eigen-decomposition
+|-- eigensolver_serial.c      # Deprecated serial LAPACK reference implementation
 |-- kmeans.c / .h             # Distributed k-means
 |-- compute_similarity.c / .h # RBF similarity + sigma heuristic
 |-- read_matrix_size.c / .h   # Input format detection
@@ -52,6 +53,7 @@ spectral-clustering/
 |-- Makefile
 |-- run_spectral.sh           # General PBS job submission script
 |-- data/                     # Input datasets
+|-- img/                      # Strong/weak scaling plots
 |-- output/                   # CSV benchmarking results
 `-- benchmark/                # PBS job submission scripts for benchmarks
 ```
@@ -73,7 +75,7 @@ An optional quality metric is implemented:
 ### Load required modules (example)
 
 ```bash
-module load OpenMPI/4.1.5-GCC-12.3.0
+module load OpenMPI/4.1.6-GCC-13.2.0
 module load ScaLAPACK/2.2.0-gompi-2023a-fb
 ```
 
@@ -123,6 +125,7 @@ qsub run_spectral.sh
 ```
 
 - Standard output is written to the PBS output file
+- The general script runs `data/input/matrix_n2000.txt` with `k = 3` and `clusters = 3`
 - Performance results are appended to `output/performance_1.csv`
 
 ---
@@ -142,6 +145,7 @@ For each run, the following timings are recorded:
 - Total runtime
 
 Each execution appends timing and quality information to a shared CSV file, enabling strong-scaling and dataset-size analysis without manual intervention.
+The `img/` directory contains generated strong-scaling and weak-scaling plots, including comparisons for the ScaLAPACK eigensolver.
 
 ---
 
