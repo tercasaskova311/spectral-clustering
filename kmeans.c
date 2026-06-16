@@ -5,10 +5,8 @@
 
 void kmeans(double *U, int n, int k, int clusters, int iters, int rank, int size, int *labels){
     /* Allocate and initialize centroids on rank 0 */
-
-    /* STRATEGY: centroids (write) - no dependency between different c
-    * but WAW and RAW dependencies on centroids[c * k + j] within the same c and j.
-     * OpenMP = not parallelizable since centroids is shared with dependencies.
+    /* Each iteration initializes a unique centroid element.
+     * No loop-carried dependencies exist. The loop is OpenMP parallelizable.
      */
     double *centroids = malloc(clusters * k * sizeof(double));
     if (rank == 0){
@@ -26,38 +24,37 @@ void kmeans(double *U, int n, int k, int clusters, int iters, int rank, int size
     int end = start + ((rank < rem) ? rows + 1 : rows);
 
     /* OUTER LOOP: Iterate for a fixed number of times 
-     * STRATEGY: labels[i] (write) - no dependency between different i, 
-     *.          but WAW and RAW dependencies on labels[i] within the same i.
-     *           centroids (read) - no dependency
-     * OpenMP = parallelizable over local rows. Each thread computes its own portion 
-     * of the labels.
+     * Each iteration initializes a unique centroid element.
+     * No loop-carried dependencies exist.
+     * OpenMP = parallelizable over local rows. Each thread computes 
+     * its own portion of the labels and centroid updates.
      */
 
     for (int it = 0; it < iters; it++) {
         double *local_sum = calloc(clusters * k, sizeof(double));
         int *local_count = calloc(clusters, sizeof(int));
 
-        /* Assignment step */
-        /* STRATEGY: labels[i] (write) - no dependency between different i, 
-         *.          but WAW and RAW dependencies on labels[i] within the same i.
-         *           centroids (read) - no dependency
-         * OpenMP = parallelizable over local rows. Each thread computes its own portion 
-         * of the labels.
+        /* Assignment step
+         *Label assignment is independent across points. 
+         However, updates to local_sum and local_count create 
+         race conditions under OpenMP and require reductions, 
+         atomics, or thread-private accumulators.
          */
         for (int i = start; i < end; i++) {
             int best = 0;
             double best_dist = 1e100;
 
             /* Compute distances to each centroid 
-             * STRATEGY: best_dist (write) - no dependency between different c,
-             *           but WAW and RAW dependencies on best_dist within the same c.
-             *          centroids (read) - no dependency
-             * OpenMP = parallelizable over clusters. 
-             * Each thread computes its own portion of the distances.
+             * Reduction dependency (minimum search) 
+             * through best_dist and associated index best.
+             * The loop contains a min-reduction dependency 
+             * and is usually left sequential. Parallelizing 
+             * the outer point loop provides greater benefit.
             */
             for (int c = 0; c < clusters; c++) {
                 double dist = 0.0;
                 for (int j = 0; j < k; j++) {
+                    /* reduction dependency (j => j+1) - but usually k is small */
                     double d = U[i * k + j] - centroids[c * k + j];
                     dist += d * d;
                 }
@@ -68,11 +65,9 @@ void kmeans(double *U, int n, int k, int clusters, int iters, int rank, int size
             }
             
             /* Assign the point to the closest centroid */
-            /* STRATEGY: labels[i] (write) - no dependency between different i, 
-             *.          but WAW and RAW dependencies on labels[i] within the same i.
-             *           centroids (read) - no dependency
-             * OpenMP = parallelizable over local rows. Each thread computes its own portion 
-             * of the labels.
+            /* OpenMP parallelization of the assignment loop requires thread-private 
+             * partial sums and counts (or atomics/reductions) because 
+             * multiple points may contribute to the same cluster simultaneously.
              */
             labels[i] = best;
             local_count[best]++;
@@ -87,12 +82,10 @@ void kmeans(double *U, int n, int k, int clusters, int iters, int rank, int size
                       clusters, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
 
         /* Update centroids */
-        /* STRATEGY: centroids[c * k + j] (write) - no dependency between different c and j,
-         *           but WAW and RAW dependencies on centroids[c * k + j] within the same c and j.
-         *           local_sum (read) - no dependency
-         *           local_count (read) - no dependency
-         * OpenMP = parallelizable over clusters and dimensions. Each thread computes its own portion 
-         * of the centroids.
+        /* Each centroid component is updated independently from globally reduced 
+         *sums and counts. No loop-carried dependencies exist.
+         * OpenMP = parallelizable over clusters and dimensions. Each thread computes 
+         * its own portion of the centroids.
          */
         for (int c = 0; c < clusters; c++) {
             if (local_count[c] > 0) 
